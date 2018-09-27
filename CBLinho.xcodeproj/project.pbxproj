@@ -1,0 +1,626 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BE504301215CF2A700EBEBEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE504300215CF2A700EBEBEE /* AppDelegate.swift */; };
+		BE504303215CF2A700EBEBEE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE504302215CF2A700EBEBEE /* ViewController.swift */; };
+		BE504306215CF2A700EBEBEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE504304215CF2A700EBEBEE /* Main.storyboard */; };
+		BE504308215CF2A800EBEBEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE504307215CF2A800EBEBEE /* Assets.xcassets */; };
+		BE50430B215CF2A800EBEBEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE504309215CF2A800EBEBEE /* LaunchScreen.storyboard */; };
+		BE504310215CF2A800EBEBEE /* CBLinho WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = BE50430F215CF2A800EBEBEE /* CBLinho WatchKit App.app */; };
+		BE504316215CF2A800EBEBEE /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE504314215CF2A800EBEBEE /* Interface.storyboard */; };
+		BE504318215CF2A800EBEBEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE504317215CF2A800EBEBEE /* Assets.xcassets */; };
+		BE50431F215CF2A900EBEBEE /* CBLinho WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BE50431E215CF2A900EBEBEE /* CBLinho WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BE504324215CF2A900EBEBEE /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE504323215CF2A900EBEBEE /* InterfaceController.swift */; };
+		BE504326215CF2A900EBEBEE /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE504325215CF2A900EBEBEE /* ExtensionDelegate.swift */; };
+		BE504328215CF2A900EBEBEE /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE504327215CF2A900EBEBEE /* NotificationController.swift */; };
+		BE50432A215CF2A900EBEBEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE504329215CF2A900EBEBEE /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BE504311215CF2A800EBEBEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE5042F5215CF2A700EBEBEE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE50430E215CF2A800EBEBEE;
+			remoteInfo = "CBLinho WatchKit App";
+		};
+		BE504320215CF2A900EBEBEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE5042F5215CF2A700EBEBEE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE50431D215CF2A900EBEBEE;
+			remoteInfo = "CBLinho WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BE504332215CF2A900EBEBEE /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BE50431F215CF2A900EBEBEE /* CBLinho WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE504336215CF2A900EBEBEE /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				BE504310215CF2A800EBEBEE /* CBLinho WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		BE5042FD215CF2A700EBEBEE /* CBLinho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBLinho.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE504300215CF2A700EBEBEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BE504302215CF2A700EBEBEE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BE504305215CF2A700EBEBEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BE504307215CF2A800EBEBEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BE50430A215CF2A800EBEBEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BE50430C215CF2A800EBEBEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE50430F215CF2A800EBEBEE /* CBLinho WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CBLinho WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE504315215CF2A800EBEBEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		BE504317215CF2A800EBEBEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BE504319215CF2A900EBEBEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE50431E215CF2A900EBEBEE /* CBLinho WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CBLinho WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE504323215CF2A900EBEBEE /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		BE504325215CF2A900EBEBEE /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		BE504327215CF2A900EBEBEE /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		BE504329215CF2A900EBEBEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BE50432B215CF2A900EBEBEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE50432C215CF2A900EBEBEE /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BE5042FA215CF2A700EBEBEE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE50431B215CF2A900EBEBEE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BE5042F4215CF2A700EBEBEE = {
+			isa = PBXGroup;
+			children = (
+				BE5042FF215CF2A700EBEBEE /* CBLinho */,
+				BE504313215CF2A800EBEBEE /* CBLinho WatchKit App */,
+				BE504322215CF2A900EBEBEE /* CBLinho WatchKit Extension */,
+				BE5042FE215CF2A700EBEBEE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BE5042FE215CF2A700EBEBEE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE5042FD215CF2A700EBEBEE /* CBLinho.app */,
+				BE50430F215CF2A800EBEBEE /* CBLinho WatchKit App.app */,
+				BE50431E215CF2A900EBEBEE /* CBLinho WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BE5042FF215CF2A700EBEBEE /* CBLinho */ = {
+			isa = PBXGroup;
+			children = (
+				BE504300215CF2A700EBEBEE /* AppDelegate.swift */,
+				BE504302215CF2A700EBEBEE /* ViewController.swift */,
+				BE504304215CF2A700EBEBEE /* Main.storyboard */,
+				BE504307215CF2A800EBEBEE /* Assets.xcassets */,
+				BE504309215CF2A800EBEBEE /* LaunchScreen.storyboard */,
+				BE50430C215CF2A800EBEBEE /* Info.plist */,
+			);
+			path = CBLinho;
+			sourceTree = "<group>";
+		};
+		BE504313215CF2A800EBEBEE /* CBLinho WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				BE504314215CF2A800EBEBEE /* Interface.storyboard */,
+				BE504317215CF2A800EBEBEE /* Assets.xcassets */,
+				BE504319215CF2A900EBEBEE /* Info.plist */,
+			);
+			path = "CBLinho WatchKit App";
+			sourceTree = "<group>";
+		};
+		BE504322215CF2A900EBEBEE /* CBLinho WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BE504323215CF2A900EBEBEE /* InterfaceController.swift */,
+				BE504325215CF2A900EBEBEE /* ExtensionDelegate.swift */,
+				BE504327215CF2A900EBEBEE /* NotificationController.swift */,
+				BE504329215CF2A900EBEBEE /* Assets.xcassets */,
+				BE50432B215CF2A900EBEBEE /* Info.plist */,
+				BE50432C215CF2A900EBEBEE /* PushNotificationPayload.apns */,
+			);
+			path = "CBLinho WatchKit Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BE5042FC215CF2A700EBEBEE /* CBLinho */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE504337215CF2A900EBEBEE /* Build configuration list for PBXNativeTarget "CBLinho" */;
+			buildPhases = (
+				BE5042F9215CF2A700EBEBEE /* Sources */,
+				BE5042FA215CF2A700EBEBEE /* Frameworks */,
+				BE5042FB215CF2A700EBEBEE /* Resources */,
+				BE504336215CF2A900EBEBEE /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BE504312215CF2A800EBEBEE /* PBXTargetDependency */,
+			);
+			name = CBLinho;
+			productName = CBLinho;
+			productReference = BE5042FD215CF2A700EBEBEE /* CBLinho.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BE50430E215CF2A800EBEBEE /* CBLinho WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE504333215CF2A900EBEBEE /* Build configuration list for PBXNativeTarget "CBLinho WatchKit App" */;
+			buildPhases = (
+				BE50430D215CF2A800EBEBEE /* Resources */,
+				BE504332215CF2A900EBEBEE /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BE504321215CF2A900EBEBEE /* PBXTargetDependency */,
+			);
+			name = "CBLinho WatchKit App";
+			productName = "CBLinho WatchKit App";
+			productReference = BE50430F215CF2A800EBEBEE /* CBLinho WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		BE50431D215CF2A900EBEBEE /* CBLinho WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE50432F215CF2A900EBEBEE /* Build configuration list for PBXNativeTarget "CBLinho WatchKit Extension" */;
+			buildPhases = (
+				BE50431A215CF2A900EBEBEE /* Sources */,
+				BE50431B215CF2A900EBEBEE /* Frameworks */,
+				BE50431C215CF2A900EBEBEE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CBLinho WatchKit Extension";
+			productName = "CBLinho WatchKit Extension";
+			productReference = BE50431E215CF2A900EBEBEE /* CBLinho WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BE5042F5215CF2A700EBEBEE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Ada 2018";
+				TargetAttributes = {
+					BE5042FC215CF2A700EBEBEE = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					BE50430E215CF2A800EBEBEE = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					BE50431D215CF2A900EBEBEE = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+				};
+			};
+			buildConfigurationList = BE5042F8215CF2A700EBEBEE /* Build configuration list for PBXProject "CBLinho" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BE5042F4215CF2A700EBEBEE;
+			productRefGroup = BE5042FE215CF2A700EBEBEE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BE5042FC215CF2A700EBEBEE /* CBLinho */,
+				BE50430E215CF2A800EBEBEE /* CBLinho WatchKit App */,
+				BE50431D215CF2A900EBEBEE /* CBLinho WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BE5042FB215CF2A700EBEBEE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE50430B215CF2A800EBEBEE /* LaunchScreen.storyboard in Resources */,
+				BE504308215CF2A800EBEBEE /* Assets.xcassets in Resources */,
+				BE504306215CF2A700EBEBEE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE50430D215CF2A800EBEBEE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE504318215CF2A800EBEBEE /* Assets.xcassets in Resources */,
+				BE504316215CF2A800EBEBEE /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE50431C215CF2A900EBEBEE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE50432A215CF2A900EBEBEE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BE5042F9215CF2A700EBEBEE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE504303215CF2A700EBEBEE /* ViewController.swift in Sources */,
+				BE504301215CF2A700EBEBEE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE50431A215CF2A900EBEBEE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE504328215CF2A900EBEBEE /* NotificationController.swift in Sources */,
+				BE504326215CF2A900EBEBEE /* ExtensionDelegate.swift in Sources */,
+				BE504324215CF2A900EBEBEE /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BE504312215CF2A800EBEBEE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE50430E215CF2A800EBEBEE /* CBLinho WatchKit App */;
+			targetProxy = BE504311215CF2A800EBEBEE /* PBXContainerItemProxy */;
+		};
+		BE504321215CF2A900EBEBEE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE50431D215CF2A900EBEBEE /* CBLinho WatchKit Extension */;
+			targetProxy = BE504320215CF2A900EBEBEE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BE504304215CF2A700EBEBEE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE504305215CF2A700EBEBEE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BE504309215CF2A800EBEBEE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE50430A215CF2A800EBEBEE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BE504314215CF2A800EBEBEE /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE504315215CF2A800EBEBEE /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BE50432D215CF2A900EBEBEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BE50432E215CF2A900EBEBEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BE504330215CF2A900EBEBEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V9TV25TFN7;
+				INFOPLIST_FILE = "CBLinho WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		BE504331215CF2A900EBEBEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V9TV25TFN7;
+				INFOPLIST_FILE = "CBLinho WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
+		BE504334215CF2A900EBEBEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V9TV25TFN7;
+				IBSC_MODULE = CBLinho_WatchKit_Extension;
+				INFOPLIST_FILE = "CBLinho WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		BE504335215CF2A900EBEBEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V9TV25TFN7;
+				IBSC_MODULE = CBLinho_WatchKit_Extension;
+				INFOPLIST_FILE = "CBLinho WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
+		BE504338215CF2A900EBEBEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V9TV25TFN7;
+				INFOPLIST_FILE = CBLinho/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BE504339215CF2A900EBEBEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V9TV25TFN7;
+				INFOPLIST_FILE = CBLinho/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BE5042F8215CF2A700EBEBEE /* Build configuration list for PBXProject "CBLinho" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE50432D215CF2A900EBEBEE /* Debug */,
+				BE50432E215CF2A900EBEBEE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE50432F215CF2A900EBEBEE /* Build configuration list for PBXNativeTarget "CBLinho WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE504330215CF2A900EBEBEE /* Debug */,
+				BE504331215CF2A900EBEBEE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE504333215CF2A900EBEBEE /* Build configuration list for PBXNativeTarget "CBLinho WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE504334215CF2A900EBEBEE /* Debug */,
+				BE504335215CF2A900EBEBEE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE504337215CF2A900EBEBEE /* Build configuration list for PBXNativeTarget "CBLinho" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE504338215CF2A900EBEBEE /* Debug */,
+				BE504339215CF2A900EBEBEE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BE5042F5215CF2A700EBEBEE /* Project object */;
+}
