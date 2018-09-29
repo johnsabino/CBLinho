@@ -11,7 +11,7 @@ import CoreData
 class CoreDataManager {
     
     static var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "LiciStation")
+        let container = NSPersistentContainer(name: "CBLinho")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -46,5 +46,11 @@ class CoreDataManager {
 extension Cebelinho {
     convenience init(){
         self.init(context : CoreDataManager.persistentContainer.viewContext)
+        self.boring = 100
+        self.dirty = 100
+        self.hungry = 100
+        self.sleepy = 100
+        
+        CoreDataManager.saveContext()
     }
 }
