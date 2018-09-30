@@ -1,16 +1,56 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14113" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11055"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14033"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="CBLinho_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" id="POd-5B-3kx">
+                            <items>
+                                <group width="1" alignment="left" id="V4e-TF-Vg0">
+                                    <items>
+                                        <label width="0.5" height="1" alignment="left" text="100" textAlignment="center" id="neU-WJ-6fV"/>
+                                        <button width="0.5" alignment="right" title="Dar comida" id="Yoj-Di-GAF"/>
+                                    </items>
+                                </group>
+                                <group width="1" alignment="left" id="O8E-qx-Vjp">
+                                    <items>
+                                        <label width="0.5" height="1" alignment="left" text="100" textAlignment="center" id="Fk5-O1-yoC"/>
+                                        <button width="0.5" alignment="right" title="Dar banho" id="4u7-YC-qeJ"/>
+                                    </items>
+                                </group>
+                                <group width="1" alignment="left" id="Uso-So-Sp2">
+                                    <items>
+                                        <label width="0.5" height="1" alignment="left" text="100" textAlignment="center" id="BDL-jA-y5E"/>
+                                        <button width="0.5" alignment="left" title="Brincar" id="nHg-Bh-gt9"/>
+                                    </items>
+                                </group>
+                                <group width="1" alignment="left" id="gzY-3P-mqi">
+                                    <items>
+                                        <label width="0.5" height="1" alignment="left" text="100" textAlignment="center" id="NQ1-UT-zkV"/>
+                                        <button width="0.5" alignment="left" title="Dormir" id="bcR-Kx-d0z"/>
+                                    </items>
+                                </group>
+                                <button width="1" alignment="left" title="notification" id="GiF-v8-pbc">
+                                    <connections>
+                                        <action selector="sendNot" destination="AgC-eL-Hgc" id="p2J-Y0-jzV"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="220" y="344.5"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -31,7 +71,7 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="CBLinho_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>

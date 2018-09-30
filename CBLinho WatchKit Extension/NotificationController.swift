@@ -10,9 +10,8 @@ import WatchKit
 import Foundation
 import UserNotifications
 
-
 class NotificationController: WKUserNotificationInterfaceController {
-
+   
     override init() {
         // Initialize variables here.
         super.init()
@@ -26,18 +25,47 @@ class NotificationController: WKUserNotificationInterfaceController {
     }
 
     override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
-
-    /*
+    
+    static func sendNotification(){
+        let content = UNMutableNotificationContent()
+        let center = UNUserNotificationCenter.current()
+        content.title = "Cebelinho"
+        content.body = "Esta eh uma mensagem!"
+        content.sound = UNNotificationSound.default()
+        
+        // Time
+        var trigger: UNTimeIntervalNotificationTrigger?
+        trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        
+        // Actions
+        let snoozeAction = UNNotificationAction(identifier: "Care", title: "Care", options: .foreground)
+        
+        let category = UNNotificationCategory(identifier: "UYLReminderCategory", actions: [snoozeAction], intentIdentifiers: [] as? [String] ?? [String](), options: .customDismissAction)
+        let categories = Set<AnyHashable>([category])
+        
+        center.setNotificationCategories(categories as? Set<UNNotificationCategory> ?? Set<UNNotificationCategory>())
+        
+        content.categoryIdentifier = "UYLReminderCategory"
+        
+        let identifier: String = UUID().uuidString
+        
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        
+        center.add(request, withCompletionHandler: {(_ error: Error?) -> Void in
+            if error != nil {
+                print("ERRO: \(String(describing: error))")
+            }
+        })
+    }
+    
     override func didReceive(_ notification: UNNotification, withCompletion completionHandler: @escaping (WKUserNotificationInterfaceType) -> Swift.Void) {
-        // This method is called when a notification needs to be presented.
-        // Implement it if you use a dynamic notification interface.
-        // Populate your dynamic notification interface as quickly as possible.
-        //
-        // After populating your dynamic notification interface call the completion block.
+        
+        print("NOTIFICADO")
         completionHandler(.custom)
     }
-    */
+ 
+
+    
 }

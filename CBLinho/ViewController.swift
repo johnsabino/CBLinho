@@ -7,20 +7,26 @@
 //
 
 import UIKit
+import WatchConnectivity
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var hungryLabel: UILabel!
     @IBOutlet weak var sleepyLabel: UILabel!
     @IBOutlet weak var dirtyLabel: UILabel!
     @IBOutlet weak var boringLabel: UILabel!
     
-    var hungryStr = "1"
-    var sleepyStr = "1"
-    var dirtyStr = "1"
-    var boringStr = "1"
+    
     
     var cebelinho : Cebelinho?
+    
+    //Watch Communication
+    var lastMessage: CFAbsoluteTime = 0
+
+    var boringStr = "100"
+    var hungryStr = "100"
+    var dirtyStr = "100"
+    var sleepyStr = "100"
     
     //backgroundTask
     var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
@@ -31,21 +37,33 @@ class ViewController: UIViewController {
         CebelinhoPlay.start()
         CebelinhoPlay.loosingStatusByTime()
         cebelinho = CebelinhoPlay.getCebeliho()
-        Timer.scheduledTimer(timeInterval: 0.2, target: self,
+        Timer.scheduledTimer(timeInterval: 2, target: self,
                              selector: #selector(updateUI), userInfo: nil, repeats: true)
         registerBackgroundTask()
         
+        if (WCSession.isSupported()) {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
         
     }
-    
     
     @objc func updateUI(){
         switch UIApplication.shared.applicationState {
         case .active:
-            self.hungryLabel.text = String((cebelinho?.hungry)!)
-            self.sleepyLabel.text = String((cebelinho?.sleepy)!)
-            self.boringLabel.text = String((cebelinho?.boring)!)
-            self.dirtyLabel.text = String((cebelinho?.dirty)!)
+            
+            boringStr = String((cebelinho?.boring)!)
+            hungryStr = String((cebelinho?.hungry)!)
+            dirtyStr = String((cebelinho?.dirty)!)
+            sleepyStr = String((cebelinho?.sleepy)!)
+            
+            self.hungryLabel.text = hungryStr
+            self.sleepyLabel.text = sleepyStr
+            self.boringLabel.text = boringStr
+            self.dirtyLabel.text = dirtyStr
+            
+            sendWatchMessage()
         case .background:
             print("App is backgrounded. Cebelinho hungry = \((cebelinho?.hungry)!)")
             print("Background time remaining = \(UIApplication.shared.backgroundTimeRemaining) seconds")
@@ -57,8 +75,6 @@ class ViewController: UIViewController {
     
     func registerBackgroundTask() {
         backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
-        
-            
             self?.endBackgroundTask()
         }
         assert(backgroundTask != UIBackgroundTaskInvalid)
@@ -69,6 +85,40 @@ class ViewController: UIViewController {
         UIApplication.shared.endBackgroundTask(backgroundTask)
         backgroundTask = UIBackgroundTaskInvalid
     }
+    
+    func sendWatchMessage() {
+        
+//        let currentTime = CFAbsoluteTimeGetCurrent()
+//
+//        // if less than half a second has passed, bail out
+//        if lastMessage + 0.5 > currentTime {
+//            return
+//        }
+        
+        // send a message to the watch if it's reachable
+        if (WCSession.default.isReachable) {
+            // this is a meaningless message, but it's enough for our purposes
+            let message = ["Boring": boringStr, "Hungry": hungryStr, "Sleepy": sleepyStr,"Dirty": dirtyStr]
+            WCSession.default.sendMessage(message, replyHandler: nil)
+        }
+        
+        // update our rate limiting property
+       // lastMessage = CFAbsoluteTimeGetCurrent()
+    }
 
+}
+
+extension ViewController: WCSessionDelegate {
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
 }
 

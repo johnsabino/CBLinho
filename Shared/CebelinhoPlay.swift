@@ -19,7 +19,6 @@ class CebelinhoPlay {
             let _ = Cebelinho()
             return
         }
-        
     }
     
     static func getCebeliho() -> Cebelinho{
@@ -35,7 +34,6 @@ class CebelinhoPlay {
         let fetch : NSFetchRequest<Cebelinho> = Cebelinho.fetchRequest()
         
         let cebelinho = CoreDataManager.fetch(fetch).first
-        print(CoreDataManager.fetch(fetch))
         
         cebelinho?.boring = 100
         cebelinho?.dirty = 100
@@ -48,16 +46,19 @@ class CebelinhoPlay {
             }else{
                 cebelinho?.boring = 0
             }
+            
             if(cebelinho!.dirty > 0){
                 cebelinho?.dirty -= 1
             }else{
                 cebelinho?.dirty = 0
             }
+            
             if (cebelinho!.hungry > 0){
                 cebelinho?.hungry -= 1
             }else{
                 cebelinho?.hungry = 0
             }
+            
             if(cebelinho!.sleepy > 0){
                 cebelinho?.sleepy -= 1
             }else{
@@ -66,5 +67,14 @@ class CebelinhoPlay {
 
         }
     }
+    
+    static func syncAttributes(){
+        let fetch : NSFetchRequest<Cebelinho> = Cebelinho.fetchRequest()
+        
+        let cebelinho = CoreDataManager.fetch(fetch).first
+        print(CoreDataManager.fetch(fetch))
+        
+    }
+    
     
 }

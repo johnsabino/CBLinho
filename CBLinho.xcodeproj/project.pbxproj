@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C29EC1C216011F90026BFA0 /* CebelinhoPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC76E2C215FB186001BC157 /* CebelinhoPlay.swift */; };
 		6CC76E2D215FB186001BC157 /* CebelinhoPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC76E2C215FB186001BC157 /* CebelinhoPlay.swift */; };
 		BE504301215CF2A700EBEBEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE504300215CF2A700EBEBEE /* AppDelegate.swift */; };
 		BE504303215CF2A700EBEBEE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE504302215CF2A700EBEBEE /* ViewController.swift */; };
@@ -70,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6C29EC1D21601AD60026BFA0 /* CBLinho.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CBLinho.entitlements; sourceTree = "<group>"; };
 		6CC76E2C215FB186001BC157 /* CebelinhoPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CebelinhoPlay.swift; sourceTree = "<group>"; };
 		BE5042FD215CF2A700EBEBEE /* CBLinho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBLinho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE504300215CF2A700EBEBEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 		BE5042FF215CF2A700EBEBEE /* CBLinho */ = {
 			isa = PBXGroup;
 			children = (
+				6C29EC1D21601AD60026BFA0 /* CBLinho.entitlements */,
 				BE504300215CF2A700EBEBEE /* AppDelegate.swift */,
 				BE504302215CF2A700EBEBEE /* ViewController.swift */,
 				BE504304215CF2A700EBEBEE /* Main.storyboard */,
@@ -254,6 +257,11 @@
 				TargetAttributes = {
 					BE5042FC215CF2A700EBEBEE = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					BE50430E215CF2A800EBEBEE = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -334,6 +342,7 @@
 				BE50434F215E44D100EBEBEE /* CBLinho.xcdatamodeld in Sources */,
 				BE504328215CF2A900EBEBEE /* NotificationController.swift in Sources */,
 				BE504326215CF2A900EBEBEE /* ExtensionDelegate.swift in Sources */,
+				6C29EC1C216011F90026BFA0 /* CebelinhoPlay.swift in Sources */,
 				BE50434B215E43DD00EBEBEE /* CoreDataManager.swift in Sources */,
 				BE504324215CF2A900EBEBEE /* InterfaceController.swift in Sources */,
 			);
@@ -596,7 +605,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V9TV25TFN7;
+				DEVELOPMENT_TEAM = 87GFX8A4BG;
 				INFOPLIST_FILE = CBLinho/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -614,7 +623,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V9TV25TFN7;
+				DEVELOPMENT_TEAM = 87GFX8A4BG;
 				INFOPLIST_FILE = CBLinho/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

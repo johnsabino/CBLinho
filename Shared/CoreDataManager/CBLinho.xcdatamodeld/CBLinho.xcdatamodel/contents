@@ -4,9 +4,10 @@
         <attribute name="boring" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="dirty" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="hungry" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lastModify" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="sleepy" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Cebelinho" positionX="-54" positionY="-9" width="128" height="105"/>
+        <element name="Cebelinho" positionX="-54" positionY="-9" width="128" height="120"/>
     </elements>
 </model>
