@@ -9,10 +9,19 @@
 import Foundation
 import CoreData
 
+enum Attribute {
+    case food
+    case shower
+    case play
+    case sleep
+}
+
 class CebelinhoPlay {
     
+    static var cebelinho : Cebelinho?
+    
     static func start(){
-        
+
         let fetch : NSFetchRequest<Cebelinho> = Cebelinho.fetchRequest()
         
         guard let _ = CoreDataManager.fetch(fetch).first else {
@@ -33,12 +42,7 @@ class CebelinhoPlay {
         
         let fetch : NSFetchRequest<Cebelinho> = Cebelinho.fetchRequest()
         
-        let cebelinho = CoreDataManager.fetch(fetch).first
-        
-        cebelinho?.boring = 100
-        cebelinho?.dirty = 100
-        cebelinho?.hungry = 100
-        cebelinho?.sleepy = 100
+        cebelinho = CoreDataManager.fetch(fetch).first
         
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
             if(cebelinho!.boring > 0){
@@ -67,14 +71,44 @@ class CebelinhoPlay {
 
         }
     }
-    
-    static func syncAttributes(){
-        let fetch : NSFetchRequest<Cebelinho> = Cebelinho.fetchRequest()
+
+    static func getLowerAttribute() -> Int{
+        var array: [Int] = []
+ 
+        array.append(Int((cebelinho?.boring)!))
+        array.append(Int((cebelinho?.dirty)!))
+        array.append(Int((cebelinho?.sleepy)!))
+        array.append(Int((cebelinho?.hungry)!))
+        array.sort()
         
-        let cebelinho = CoreDataManager.fetch(fetch).first
-        print(CoreDataManager.fetch(fetch))
-        
+        return array.first!
+
     }
+    
+    static func giveAttributes(attr : Attribute){
+        
+        switch attr {
+        case .food:
+            cebelinho?.hungry = 100
+        case .shower:
+            cebelinho?.dirty = 100
+        case .play:
+            cebelinho?.boring = 100
+        case .sleep:
+            cebelinho?.sleepy = 100
+        
+        }
+    }
+
+    
+    
+//    static func syncAttributes(){
+//        let fetch : NSFetchRequest<Cebelinho> = Cebelinho.fetchRequest()
+//
+//        let cebelinho = CoreDataManager.fetch(fetch).first
+//        print(CoreDataManager.fetch(fetch))
+//
+//    }
     
     
 }

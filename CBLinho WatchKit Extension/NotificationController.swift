@@ -28,16 +28,22 @@ class NotificationController: WKUserNotificationInterfaceController {
         super.didDeactivate()
     }
     
-    static func sendNotification(){
+    static func sendNotification(withTime: Double){
         let content = UNMutableNotificationContent()
+        let notificationID = 1
+        
+        content.userInfo = ["NotificationID": notificationID]
         let center = UNUserNotificationCenter.current()
-        content.title = "Cebelinho"
-        content.body = "Esta eh uma mensagem!"
+        
+        center.removeAllPendingNotificationRequests()
+        
+        //content.title = "Cebelinho"
+        content.body = "Cebelinho need careful"
         content.sound = UNNotificationSound.default()
         
         // Time
         var trigger: UNTimeIntervalNotificationTrigger?
-        trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        trigger = UNTimeIntervalNotificationTrigger(timeInterval: withTime, repeats: false)
         
         // Actions
         let snoozeAction = UNNotificationAction(identifier: "Care", title: "Care", options: .foreground)
@@ -58,11 +64,11 @@ class NotificationController: WKUserNotificationInterfaceController {
                 print("ERRO: \(String(describing: error))")
             }
         })
+        
     }
     
     override func didReceive(_ notification: UNNotification, withCompletion completionHandler: @escaping (WKUserNotificationInterfaceType) -> Swift.Void) {
-        
-        print("NOTIFICADO")
+
         completionHandler(.custom)
     }
  

@@ -19,25 +19,41 @@
                                 <group width="1" alignment="left" id="V4e-TF-Vg0">
                                     <items>
                                         <label width="0.5" height="1" alignment="left" text="100" textAlignment="center" id="neU-WJ-6fV"/>
-                                        <button width="0.5" alignment="right" title="Dar comida" id="Yoj-Di-GAF"/>
+                                        <button width="0.5" alignment="right" title="Dar comida" id="Yoj-Di-GAF">
+                                            <connections>
+                                                <action selector="giveFood" destination="AgC-eL-Hgc" id="LSA-Pg-bi9"/>
+                                            </connections>
+                                        </button>
                                     </items>
                                 </group>
                                 <group width="1" alignment="left" id="O8E-qx-Vjp">
                                     <items>
                                         <label width="0.5" height="1" alignment="left" text="100" textAlignment="center" id="Fk5-O1-yoC"/>
-                                        <button width="0.5" alignment="right" title="Dar banho" id="4u7-YC-qeJ"/>
+                                        <button width="0.5" alignment="right" title="Dar banho" id="4u7-YC-qeJ">
+                                            <connections>
+                                                <action selector="giveShower" destination="AgC-eL-Hgc" id="fO0-23-GqW"/>
+                                            </connections>
+                                        </button>
                                     </items>
                                 </group>
                                 <group width="1" alignment="left" id="Uso-So-Sp2">
                                     <items>
                                         <label width="0.5" height="1" alignment="left" text="100" textAlignment="center" id="BDL-jA-y5E"/>
-                                        <button width="0.5" alignment="left" title="Brincar" id="nHg-Bh-gt9"/>
+                                        <button width="0.5" alignment="left" title="Brincar" id="nHg-Bh-gt9">
+                                            <connections>
+                                                <action selector="play" destination="AgC-eL-Hgc" id="N6K-4v-hrJ"/>
+                                            </connections>
+                                        </button>
                                     </items>
                                 </group>
                                 <group width="1" alignment="left" id="gzY-3P-mqi">
                                     <items>
                                         <label width="0.5" height="1" alignment="left" text="100" textAlignment="center" id="NQ1-UT-zkV"/>
-                                        <button width="0.5" alignment="left" title="Dormir" id="bcR-Kx-d0z"/>
+                                        <button width="0.5" alignment="left" title="Dormir" id="bcR-Kx-d0z">
+                                            <connections>
+                                                <action selector="sleep" destination="AgC-eL-Hgc" id="FyR-Yc-VCp"/>
+                                            </connections>
+                                        </button>
                                     </items>
                                 </group>
                                 <button width="1" alignment="left" title="notification" id="GiF-v8-pbc">
@@ -48,6 +64,12 @@
                             </items>
                         </group>
                     </items>
+                    <connections>
+                        <outlet property="boringLabel" destination="BDL-jA-y5E" id="j1a-Rz-n4M"/>
+                        <outlet property="dirtyLabel" destination="Fk5-O1-yoC" id="GLc-q1-STn"/>
+                        <outlet property="hungryLabel" destination="neU-WJ-6fV" id="tTL-Ga-bDc"/>
+                        <outlet property="sleepyLabel" destination="NQ1-UT-zkV" id="eIQ-1b-OvX"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="344.5"/>
