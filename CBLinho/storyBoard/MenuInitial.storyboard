@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-1270" y="291"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu Initial View Controller-->
         <scene sceneID="Z7Y-k2-PeH">
             <objects>
-                <viewController id="59x-2D-iHL" sceneMemberID="viewController">
+                <viewController id="59x-2D-iHL" customClass="MenuInitialViewController" customModule="CBLinho" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZTQ-zF-t8C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,14 +41,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bH4-M8-zWc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-316" y="290"/>
-        </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="Ukh-PA-2SW">
-            <objects>
-                <viewControllerPlaceholder id="Qxg-rN-CtG" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ToU-7s-kEb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="625" y="291"/>
         </scene>
     </scenes>
 </document>
