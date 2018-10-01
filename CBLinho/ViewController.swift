@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     var dirtyStr = "100"
     var sleepyStr = "100"
     
+    var messageReceive : [String : String] = ["Boring": "100", "Hungry": "100", "Sleepy": "100","Dirty": "100"]
     //backgroundTask
     var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
     
@@ -106,6 +107,21 @@ class ViewController: UIViewController {
        // lastMessage = CFAbsoluteTimeGetCurrent()
     }
 
+    @IBAction func giveFood(_ sender: Any) {
+        CebelinhoPlay.giveAttributes(attr: .food)
+    }
+    @IBAction func sleep(_ sender: Any) {
+        CebelinhoPlay.giveAttributes(attr: .sleep)
+        
+    }
+    @IBAction func giveShower(_ sender: Any) {
+        CebelinhoPlay.giveAttributes(attr: .shower)
+        
+    }
+    @IBAction func play(_ sender: Any) {
+        CebelinhoPlay.giveAttributes(attr: .play)
+    }
+    
 }
 
 extension ViewController: WCSessionDelegate {
@@ -119,6 +135,10 @@ extension ViewController: WCSessionDelegate {
     
     func sessionDidDeactivate(_ session: WCSession) {
         
+    }
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        messageReceive = message as! [String : String]
+        print("recebendo mensagem: ", messageReceive)
     }
 }
 

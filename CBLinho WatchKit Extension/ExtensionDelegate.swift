@@ -26,7 +26,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         let lowerAttribute = CebelinhoPlay.getLowerAttribute()
         print(Double(lowerAttribute/2))
         
-        NotificationController.sendNotification(withTime: Double(lowerAttribute/2))
+        //NotificationController.sendNotification(withTime: Double(lowerAttribute/2))
     }
 
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {

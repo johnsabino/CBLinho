@@ -23,12 +23,13 @@ class InterfaceController: WKInterfaceController {
     var hungryStr = "100"
     var dirtyStr = "100"
     var sleepyStr = "100"
+    var messageReceive : [String : String] = ["Boring": "100", "Hungry": "100", "Sleepy": "100","Dirty": "100"]
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
     
         CebelinhoPlay.start()
-        CebelinhoPlay.loosingStatusByTime()
+        //CebelinhoPlay.loosingStatusByTime()
         cebelinho = CebelinhoPlay.getCebeliho()
         Timer.scheduledTimer(timeInterval: 2, target: self,
                              selector: #selector(updateUI), userInfo: nil, repeats: true)
@@ -42,16 +43,20 @@ class InterfaceController: WKInterfaceController {
     }
     
     @objc func updateUI(){
-        boringStr = String((cebelinho?.boring)!)
-        hungryStr = String((cebelinho?.hungry)!)
-        dirtyStr = String((cebelinho?.dirty)!)
-        sleepyStr = String((cebelinho?.sleepy)!)
-        
+       // boringStr = String((cebelinho?.boring)!)
+        boringStr = messageReceive["Boring"]!
+       // hungryStr = String((cebelinho?.hungry)!)
+        hungryStr = messageReceive["Hungry"]!
+       // dirtyStr = String((cebelinho?.dirty)!)
+        dirtyStr = messageReceive["Sleepy"]!
+       // sleepyStr = String((cebelinho?.sleepy)!)
+        sleepyStr = messageReceive["Dirty"]!
         self.hungryLabel.setText(hungryStr)
         self.sleepyLabel.setText(sleepyStr)
         self.boringLabel.setText(boringStr)
         self.dirtyLabel.setText(dirtyStr)
         
+        sendWatchMessage()
     }
     
     
@@ -88,15 +93,43 @@ class InterfaceController: WKInterfaceController {
         
     }
     
+    func sendWatchMessage() {
+        
+        //        let currentTime = CFAbsoluteTimeGetCurrent()
+        //
+        //        // if less than half a second has passed, bail out
+        //        if lastMessage + 0.5 > currentTime {
+        //            return
+        //        }
+        
+        // send a message to the watch if it's reachable
+        if (WCSession.default.isReachable) {
+            // this is a meaningless message, but it's enough for our purposes
+            
+            let message = ["Boring": "TESTING MESSAGE"]
+            print(message)
+         
+            WCSession.default.sendMessage(message, replyHandler: nil)
+        }
+        
+        // update our rate limiting property
+        // lastMessage = CFAbsoluteTimeGetCurrent()
+    }
+    
 }
 extension InterfaceController: WCSessionDelegate{
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         
     }
+    func sessionReachabilityDidChange(_ session: WCSession) {
+        if (!session.isReachable){
+            CebelinhoPlay.syncAttributes(message: messageReceive)
+        }
+    }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        let attr = message
-        print("recebendo mensagem: ", attr)
+        messageReceive = message as! [String : String]
+        print("recebendo mensagem: ", messageReceive)
         
     }
 }
