@@ -93,6 +93,8 @@
 		BE50432C215CF2A900EBEBEE /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		BE504349215E43DD00EBEBEE /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		BE50434D215E44D100EBEBEE /* CBLinho.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CBLinho.xcdatamodel; sourceTree = "<group>"; };
+		BEA22EF121623A82004675FB /* CBLinho WatchKit App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CBLinho WatchKit App.entitlements"; sourceTree = "<group>"; };
+		BEA22EF221623A8B004675FB /* CBLinho WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CBLinho WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 		BE504313215CF2A800EBEBEE /* CBLinho WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
+				BEA22EF121623A82004675FB /* CBLinho WatchKit App.entitlements */,
 				BE504314215CF2A800EBEBEE /* Interface.storyboard */,
 				BE504317215CF2A800EBEBEE /* Assets.xcassets */,
 				BE504319215CF2A900EBEBEE /* Info.plist */,
@@ -161,6 +164,7 @@
 		BE504322215CF2A900EBEBEE /* CBLinho WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				BEA22EF221623A8B004675FB /* CBLinho WatchKit Extension.entitlements */,
 				BE504323215CF2A900EBEBEE /* InterfaceController.swift */,
 				BE504325215CF2A900EBEBEE /* ExtensionDelegate.swift */,
 				BE504327215CF2A900EBEBEE /* NotificationController.swift */,
@@ -259,16 +263,26 @@
 						CreatedOnToolsVersion = 9.4.1;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
 					BE50430E215CF2A800EBEBEE = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 0940;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					BE50431D215CF2A900EBEBEE = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -509,15 +523,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "CBLinho WatchKit Extension/CBLinho WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V9TV25TFN7;
+				DEVELOPMENT_TEAM = 87GFX8A4BG;
 				INFOPLIST_FILE = "CBLinho WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho2.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -531,15 +546,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "CBLinho WatchKit Extension/CBLinho WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V9TV25TFN7;
+				DEVELOPMENT_TEAM = 87GFX8A4BG;
 				INFOPLIST_FILE = "CBLinho WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho2.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -555,8 +571,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "CBLinho WatchKit App/CBLinho WatchKit App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V9TV25TFN7;
+				DEVELOPMENT_TEAM = 87GFX8A4BG;
 				IBSC_MODULE = CBLinho_WatchKit_Extension;
 				INFOPLIST_FILE = "CBLinho WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -564,7 +581,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho2.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -581,8 +598,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "CBLinho WatchKit App/CBLinho WatchKit App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V9TV25TFN7;
+				DEVELOPMENT_TEAM = 87GFX8A4BG;
 				IBSC_MODULE = CBLinho_WatchKit_Extension;
 				INFOPLIST_FILE = "CBLinho WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -590,7 +608,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho2.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -604,6 +622,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CBLinho/CBLinho.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87GFX8A4BG;
 				INFOPLIST_FILE = CBLinho/Info.plist;
@@ -611,7 +630,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -622,6 +641,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CBLinho/CBLinho.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87GFX8A4BG;
 				INFOPLIST_FILE = CBLinho/Info.plist;
@@ -629,7 +649,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.academy.CBLinho2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

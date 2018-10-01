@@ -30,12 +30,12 @@ class NotificationController: WKUserNotificationInterfaceController {
     
     static func sendNotification(withTime: Double){
         let content = UNMutableNotificationContent()
-        let notificationID = 1
+        //let notificationID = 1
         
-        content.userInfo = ["NotificationID": notificationID]
+        //content.userInfo = ["NotificationID": notificationID]
         let center = UNUserNotificationCenter.current()
         
-        center.removeAllPendingNotificationRequests()
+        //center.removeAllPendingNotificationRequests()
         
         //content.title = "Cebelinho"
         content.body = "Cebelinho need careful"
