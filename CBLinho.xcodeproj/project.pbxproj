@@ -736,6 +736,7 @@
 			currentVersion = BE50434D215E44D100EBEBEE /* CBLinho.xcdatamodel */;
 			path = CBLinho.xcdatamodeld;
 			sourceTree = "<group>";
+			tabWidth = 4;
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */

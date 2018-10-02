@@ -8,6 +8,7 @@
 
 import UIKit
 import WatchConnectivity
+import HealthKit
 
 class ViewController: UIViewController {
     
@@ -28,6 +29,11 @@ class ViewController: UIViewController {
     var dirtyStr = "100"
     var sleepyStr = "100"
     
+    let healthStore = HKHealthStore()
+    
+    @IBOutlet weak var messageLabel: UILabel!
+    
+    var messageReceive : [String : String] = ["Boring": "100", "Hungry": "100", "Sleepy": "100","Dirty": "100"]
     //backgroundTask
     var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
     
@@ -35,7 +41,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         CebelinhoPlay.start()
-        CebelinhoPlay.loosingStatusByTime()
+        CebelinhoPlay.loosingStatusByTime(device : .phone)
         cebelinho = CebelinhoPlay.getCebeliho()
         Timer.scheduledTimer(timeInterval: 2, target: self,
                              selector: #selector(updateUI), userInfo: nil, repeats: true)
@@ -63,7 +69,7 @@ class ViewController: UIViewController {
             self.boringLabel.text = boringStr
             self.dirtyLabel.text = dirtyStr
             
-            sendWatchMessage()
+           // sendWatchMessage()
         case .background:
             print("App is backgrounded. Cebelinho hungry = \((cebelinho?.hungry)!)")
             print("Background time remaining = \(UIApplication.shared.backgroundTimeRemaining) seconds")
@@ -98,14 +104,62 @@ class ViewController: UIViewController {
         // send a message to the watch if it's reachable
         if (WCSession.default.isReachable) {
             // this is a meaningless message, but it's enough for our purposes
-            let message = ["Boring": boringStr, "Hungry": hungryStr, "Sleepy": sleepyStr,"Dirty": dirtyStr]
-            WCSession.default.sendMessage(message, replyHandler: nil)
+            
+            
+            let bStr = String((cebelinho?.boring)!)
+            let hStr = String((cebelinho?.hungry)!)
+            let dStr = String((cebelinho?.dirty)!)
+            let sStr = String((cebelinho?.sleepy)!)
+            
+            let message = ["Boring": bStr, "Hungry": hStr, "Sleepy": sStr,"Dirty": dStr, "lastModifyWatch": String((cebelinho?.lastModifyWatch)!)]
+            
+            WCSession.default.sendMessage(message, replyHandler: nil) { (error) in
+                print(error)
+            }
+//            WCSession.default.sendMessage(message, replyHandler: { (reply) in
+//                self.messageLabel.text = reply.first?.value as? String
+//                print("resposta: ",reply)
+//            }, errorHandler: { (error) in
+//                print(error)
+//            })
+            
+            print("starting watch app")
+            
+            self.healthStore.startWatchApp(with: HKWorkoutConfiguration(), completion: { 	(success, error) in 
+                
+            })
+            
         }
         
         // update our rate limiting property
        // lastMessage = CFAbsoluteTimeGetCurrent()
     }
 
+    @IBAction func giveFood(_ sender: Any) {
+        cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
+        CebelinhoPlay.giveAttributes(attr: .food)
+        sendWatchMessage()
+    }
+    @IBAction func sleep(_ sender: Any) {
+        cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
+        CebelinhoPlay.giveAttributes(attr: .sleep)
+        sendWatchMessage()
+    }
+    @IBAction func giveShower(_ sender: Any) {
+        cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
+        CebelinhoPlay.giveAttributes(attr: .shower)
+        sendWatchMessage()
+    }
+    @IBAction func play(_ sender: Any) {
+        cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
+        CebelinhoPlay.giveAttributes(attr: .play)
+        sendWatchMessage()
+    }
+    
+    @IBAction func getResponse(_ sender: Any) {
+        cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
+        sendWatchMessage()
+    }
 }
 
 extension ViewController: WCSessionDelegate {
@@ -119,6 +173,49 @@ extension ViewController: WCSessionDelegate {
     
     func sessionDidDeactivate(_ session: WCSession) {
         
+    }
+    
+//    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+//
+//        DispatchQueue.main.async {
+//            self.messageLabel.text = (applicationContext.first?.value) as? String
+//        }
+//
+//        print("Mensagem recebida ", (applicationContext.first?.value)!)
+//    }
+    
+//    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+//        messageReceive = message as! [String : String]
+//        print("recebendo mensagem: ", messageReceive)
+//    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        
+        let lastModifyWatch = Double(message["lastModifyWatch"] as! String)!
+        
+        
+        cebelinho?.lastModifyWatch = lastModifyWatch
+        
+        if lastModifyWatch > (cebelinho?.lastModifyIOS)!{
+            
+            cebelinho?.boring = Double(message["Boring"] as! String)!
+            cebelinho?.hungry = Double(message["Hungry"] as! String)!
+            cebelinho?.dirty = Double(message["Dirty"] as! String)!
+            cebelinho?.sleepy = Double(message["Sleepy"] as! String)!
+            
+        }
+        
+        let bStr = String((cebelinho?.boring)!)
+        let hStr = String((cebelinho?.hungry)!)
+        let dStr = String((cebelinho?.dirty)!)
+        let sStr = String((cebelinho?.sleepy)!)
+        
+        let reply = ["Boring": bStr, "Hungry": hStr, "Sleepy": sStr,"Dirty": dStr, "lastModifyIOS": String(CFAbsoluteTimeGetCurrent())]
+        
+        replyHandler(reply)
+        
+
+        //replyHandler(["Resposta": "RESPONDIDO"])
     }
 }
 

@@ -8,12 +8,18 @@
 
 import Foundation
 import CoreData
+import WatchKit
 
 enum Attribute {
     case food
     case shower
     case play
     case sleep
+}
+
+enum Device {
+    case phone
+    case watch
 }
 
 class CebelinhoPlay {
@@ -25,6 +31,7 @@ class CebelinhoPlay {
         let fetch : NSFetchRequest<Cebelinho> = Cebelinho.fetchRequest()
         
         guard let _ = CoreDataManager.fetch(fetch).first else {
+            print("criando novo...")
             let _ = Cebelinho()
             return
         }
@@ -34,15 +41,33 @@ class CebelinhoPlay {
         let fetch : NSFetchRequest<Cebelinho> = Cebelinho.fetchRequest()
     
         let cebelinho = CoreDataManager.fetch(fetch).first
+        
         return cebelinho!
-    
+
     }
     
-    static func loosingStatusByTime(){
+    static func loosingStatusByTime(device : Device){
+        
         
         let fetch : NSFetchRequest<Cebelinho> = Cebelinho.fetchRequest()
         
         cebelinho = CoreDataManager.fetch(fetch).first
+        
+        var lastClosed : Double = 0.0
+        
+        switch device {
+        case .phone:
+            lastClosed = (cebelinho?.lastClosedIOS)!
+        case .watch:
+            lastClosed = (cebelinho?.lastClosedWatch)!
+        }
+        
+        let statusLosted = CFAbsoluteTimeGetCurrent() - lastClosed
+        
+        cebelinho?.boring -= statusLosted
+        cebelinho?.dirty -= statusLosted
+        cebelinho?.hungry -= statusLosted
+        cebelinho?.sleepy -= statusLosted
         
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
             if(cebelinho!.boring > 0){
@@ -68,17 +93,23 @@ class CebelinhoPlay {
             }else{
                 cebelinho?.sleepy = 0
             }
+            
+//            if (WCSession.default.isReachable) {
+//                // this is a meaningless message, but it's enough for our purposes
+//                let message = ["Boring": boringStr, "Hungry": hungryStr, "Sleepy": sleepyStr,"Dirty": dirtyStr]
+//                WCSession.default.sendMessage(message, replyHandler: nil)
+//            }
 
         }
     }
 
-    static func getLowerAttribute() -> Int{
-        var array: [Int] = []
+    static func getLowerAttribute() -> Double{
+        var array: [Double] = []
  
-        array.append(Int((cebelinho?.boring)!))
-        array.append(Int((cebelinho?.dirty)!))
-        array.append(Int((cebelinho?.sleepy)!))
-        array.append(Int((cebelinho?.hungry)!))
+        array.append((cebelinho?.boring)!)
+        array.append((cebelinho?.dirty)!)
+        array.append((cebelinho?.sleepy)!)
+        array.append((cebelinho?.hungry)!)
         array.sort()
         
         return array.first!
@@ -102,13 +133,16 @@ class CebelinhoPlay {
 
     
     
-//    static func syncAttributes(){
-//        let fetch : NSFetchRequest<Cebelinho> = Cebelinho.fetchRequest()
-//
-//        let cebelinho = CoreDataManager.fetch(fetch).first
-//        print(CoreDataManager.fetch(fetch))
-//
-//    }
+    static func syncAttributes(message: [String : String]){
+        let cebelinho = self.getCebeliho()
+        //["Boring": "100", "Hungry": "100", "Sleepy": "100","Dirty": "100"]
+        cebelinho.boring = Double(message["Boring"]!)!
+        cebelinho.dirty = Double(message["Dirty"]!)!
+        cebelinho.hungry = Double(message["Hungry"]!)!
+        cebelinho.sleepy = Double(message["Sleepy"]!)!
+        
+
+    }
     
     
 }
