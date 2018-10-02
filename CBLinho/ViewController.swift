@@ -40,9 +40,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         CebelinhoPlay.start()
-        CebelinhoPlay.loosingStatusByTime(device : .phone)
+        
         cebelinho = CebelinhoPlay.getCebeliho()
-        Timer.scheduledTimer(timeInterval: 2, target: self,
+        Timer.scheduledTimer(timeInterval: 1, target: self,
                              selector: #selector(updateUI), userInfo: nil, repeats: true)
         registerBackgroundTask()
         
@@ -93,17 +93,7 @@ class ViewController: UIViewController {
     
     func sendWatchMessage() {
         
-//        let currentTime = CFAbsoluteTimeGetCurrent()
-//
-//        // if less than half a second has passed, bail out
-//        if lastMessage + 0.5 > currentTime {
-//            return
-//        }
-        
-        // send a message to the watch if it's reachable
         if (WCSession.default.isReachable) {
-            // this is a meaningless message, but it's enough for our purposes
-            
             
             let bStr = String((cebelinho?.boring)!)
             let hStr = String((cebelinho?.hungry)!)
@@ -122,13 +112,11 @@ class ViewController: UIViewController {
 //                print(error)
 //            })
             
-            print("starting watch app")
+        
             
             
         }
-        
-        // update our rate limiting property
-       // lastMessage = CFAbsoluteTimeGetCurrent()
+
     }
 
     @IBAction func giveFood(_ sender: Any) {
@@ -153,8 +141,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func getResponse(_ sender: Any) {
-        cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
-        sendWatchMessage()
+  
     }
 }
 
@@ -170,29 +157,17 @@ extension ViewController: WCSessionDelegate {
     func sessionDidDeactivate(_ session: WCSession) {
         
     }
-    
-//    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-//
-//        DispatchQueue.main.async {
-//            self.messageLabel.text = (applicationContext.first?.value) as? String
-//        }
-//
-//        print("Mensagem recebida ", (applicationContext.first?.value)!)
-//    }
-    
-//    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-//        messageReceive = message as! [String : String]
-//        print("recebendo mensagem: ", messageReceive)
-//    }
-    
+        
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         
-        let lastModifyWatch = Double(message["lastModifyWatch"] as! String)!
+        let lastModifyWatch = message["lastModifyWatch"] as! Double
         
         
-        cebelinho?.lastModifyWatch = lastModifyWatch
+        //cebelinho?.lastModifyWatch = lastModifyWatch
         
-        if lastModifyWatch > (cebelinho?.lastModifyIOS)!{
+        print(lastModifyWatch , " - ", (cebelinho?.lastModifyIOS)!)
+        if lastModifyWatch > (cebelinho?.lastModifyIOS)! || message["firstTimeWatch"] as! Bool == true{
+            
             
             cebelinho?.boring = Double(message["Boring"] as! String)!
             cebelinho?.hungry = Double(message["Hungry"] as! String)!

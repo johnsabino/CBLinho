@@ -25,6 +25,7 @@ enum Device {
 class CebelinhoPlay {
     
     static var cebelinho : Cebelinho?
+    static var timer : Timer?
     
     static func start(){
 
@@ -33,6 +34,7 @@ class CebelinhoPlay {
         guard let _ = CoreDataManager.fetch(fetch).first else {
             print("criando novo...")
             let _ = Cebelinho()
+            
             return
         }
     }
@@ -46,30 +48,17 @@ class CebelinhoPlay {
 
     }
     
-    static func loosingStatusByTime(device : Device){
+    static func loosingStatusByTime(){
         
         
         let fetch : NSFetchRequest<Cebelinho> = Cebelinho.fetchRequest()
         
         cebelinho = CoreDataManager.fetch(fetch).first
         
-        var lastClosed : Double = 0.0
         
-        switch device {
-        case .phone:
-            lastClosed = (cebelinho?.lastClosedIOS)!
-        case .watch:
-            lastClosed = (cebelinho?.lastClosedWatch)!
-        }
         
-        let statusLosted = CFAbsoluteTimeGetCurrent() - lastClosed
-        
-        cebelinho?.boring -= statusLosted
-        cebelinho?.dirty -= statusLosted
-        cebelinho?.hungry -= statusLosted
-        cebelinho?.sleepy -= statusLosted
-        
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
+           
             if(cebelinho!.boring > 0){
                 cebelinho?.boring -= 1
             }else{
@@ -93,14 +82,35 @@ class CebelinhoPlay {
             }else{
                 cebelinho?.sleepy = 0
             }
-            
-//            if (WCSession.default.isReachable) {
-//                // this is a meaningless message, but it's enough for our purposes
-//                let message = ["Boring": boringStr, "Hungry": hungryStr, "Sleepy": sleepyStr,"Dirty": dirtyStr]
-//                WCSession.default.sendMessage(message, replyHandler: nil)
-//            }
-
         }
+    }
+    
+    static func updateAttributesOnActive(device : Device){
+        var lastClosed : Double = 0.0
+        var lastModify1 : Double = 0.0
+        var lastModify2 : Double = 0.0
+        switch device {
+        case .phone:
+            lastClosed = (cebelinho?.lastClosedIOS)!
+            lastModify1 = (cebelinho?.lastModifyIOS)!
+            lastModify2 = (cebelinho?.lastModifyWatch)!
+        case .watch:
+            lastClosed = (cebelinho?.lastClosedWatch)!
+            lastModify1 = (cebelinho?.lastModifyWatch)!
+            lastModify2 = (cebelinho?.lastModifyIOS)!
+        }
+        
+
+        if lastClosed > 0 && lastModify1 > lastModify2{
+            let statusLosted = CFAbsoluteTimeGetCurrent() - lastClosed
+
+            cebelinho?.boring -= statusLosted
+            cebelinho?.dirty -= statusLosted
+            cebelinho?.hungry -= statusLosted
+            cebelinho?.sleepy -= statusLosted
+        }
+        
+        
     }
 
     static func getLowerAttribute() -> Double{
@@ -130,19 +140,6 @@ class CebelinhoPlay {
         
         }
     }
-
-    
-    
-    static func syncAttributes(message: [String : String]){
-        let cebelinho = self.getCebeliho()
-        //["Boring": "100", "Hungry": "100", "Sleepy": "100","Dirty": "100"]
-        cebelinho.boring = Double(message["Boring"]!)!
-        cebelinho.dirty = Double(message["Dirty"]!)!
-        cebelinho.hungry = Double(message["Hungry"]!)!
-        cebelinho.sleepy = Double(message["Sleepy"]!)!
-        
-
-    }
-    
+   
     
 }

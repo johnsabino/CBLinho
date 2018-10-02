@@ -47,8 +47,8 @@ class LifeCblinhoViewController: UIViewController {
         Animations.animationGiff(imagens: animacoes.select[AnimationCase.barFull]!, viewAnimation: showerBar)
         
         
-        CebelinhoPlay.start()
-        CebelinhoPlay.loosingStatusByTime(device : .phone)
+        
+        //CebelinhoPlay.loosingStatusByTime()
         cebelinho = CebelinhoPlay.getCebeliho()
         Timer.scheduledTimer(timeInterval: 2, target: self,
                              selector: #selector(updateUI), userInfo: nil, repeats: true)

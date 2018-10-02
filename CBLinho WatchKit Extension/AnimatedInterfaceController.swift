@@ -37,7 +37,7 @@ class AnimatedInterfaceController: WKInterfaceController,  WCSessionDelegate{
         
         
         CebelinhoPlay.start()
-        CebelinhoPlay.loosingStatusByTime(device: .watch)
+        //CebelinhoPlay.loosingStatusByTime()
         cebelinho = CebelinhoPlay.getCebeliho()
         Timer.scheduledTimer(timeInterval: 2, target: self,
                              selector: #selector(updateUI), userInfo: nil, repeats: true)
