@@ -17,6 +17,11 @@ enum Attribute {
     case sleep
 }
 
+enum Device {
+    case phone
+    case watch
+}
+
 class CebelinhoPlay {
     
     static var cebelinho : Cebelinho?
@@ -41,14 +46,23 @@ class CebelinhoPlay {
 
     }
     
-    static func loosingStatusByTime(){
+    static func loosingStatusByTime(device : Device){
         
         
         let fetch : NSFetchRequest<Cebelinho> = Cebelinho.fetchRequest()
         
         cebelinho = CoreDataManager.fetch(fetch).first
         
-        let statusLosted = CFAbsoluteTimeGetCurrent() - (cebelinho?.lastModifyIOS)!
+        var lastClosed : Double = 0.0
+        
+        switch device {
+        case .phone:
+            lastClosed = (cebelinho?.lastClosedIOS)!
+        case .watch:
+            lastClosed = (cebelinho?.lastClosedWatch)!
+        }
+        
+        let statusLosted = CFAbsoluteTimeGetCurrent() - lastClosed
         
         cebelinho?.boring -= statusLosted
         cebelinho?.dirty -= statusLosted

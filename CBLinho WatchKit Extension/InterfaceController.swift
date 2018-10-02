@@ -29,7 +29,7 @@ class InterfaceController: WKInterfaceController {
         super.awake(withContext: context)
     
         CebelinhoPlay.start()
-        CebelinhoPlay.loosingStatusByTime()
+        CebelinhoPlay.loosingStatusByTime(device: .watch)
         cebelinho = CebelinhoPlay.getCebeliho()
         Timer.scheduledTimer(timeInterval: 2, target: self,
                              selector: #selector(updateUI), userInfo: nil, repeats: true)

@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         CebelinhoPlay.start()
-        CebelinhoPlay.loosingStatusByTime()
+        CebelinhoPlay.loosingStatusByTime(device : .phone)
         cebelinho = CebelinhoPlay.getCebeliho()
         Timer.scheduledTimer(timeInterval: 2, target: self,
                              selector: #selector(updateUI), userInfo: nil, repeats: true)
