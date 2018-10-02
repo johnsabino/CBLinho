@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6C29EC1C216011F90026BFA0 /* CebelinhoPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC76E2C215FB186001BC157 /* CebelinhoPlay.swift */; };
 		6CC76E2D215FB186001BC157 /* CebelinhoPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC76E2C215FB186001BC157 /* CebelinhoPlay.swift */; };
+		BE0E4C692163AEF400742ED4 /* AnimatedInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E4C682163AEF300742ED4 /* AnimatedInterfaceController.swift */; };
 		BE29FB532162580E005F9E8D /* MenuInitial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE29FB522162580E005F9E8D /* MenuInitial.storyboard */; };
 		BE29FB58216258FD005F9E8D /* MenuInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29FB57216258FD005F9E8D /* MenuInitialViewController.swift */; };
 		BE29FB5A21625920005F9E8D /* LifeCblinhoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29FB5921625920005F9E8D /* LifeCblinhoViewController.swift */; };
@@ -80,6 +81,7 @@
 /* Begin PBXFileReference section */
 		6C29EC1D21601AD60026BFA0 /* CBLinho.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CBLinho.entitlements; sourceTree = "<group>"; };
 		6CC76E2C215FB186001BC157 /* CebelinhoPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CebelinhoPlay.swift; sourceTree = "<group>"; };
+		BE0E4C682163AEF300742ED4 /* AnimatedInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedInterfaceController.swift; sourceTree = "<group>"; };
 		BE29FB522162580E005F9E8D /* MenuInitial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuInitial.storyboard; sourceTree = "<group>"; };
 		BE29FB57216258FD005F9E8D /* MenuInitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInitialViewController.swift; sourceTree = "<group>"; };
 		BE29FB5921625920005F9E8D /* LifeCblinhoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeCblinhoViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				BE504323215CF2A900EBEBEE /* InterfaceController.swift */,
 				BE504325215CF2A900EBEBEE /* ExtensionDelegate.swift */,
 				BE504327215CF2A900EBEBEE /* NotificationController.swift */,
+				BE0E4C682163AEF300742ED4 /* AnimatedInterfaceController.swift */,
 				BE504329215CF2A900EBEBEE /* Assets.xcassets */,
 				BE50432B215CF2A900EBEBEE /* Info.plist */,
 				BE50432C215CF2A900EBEBEE /* PushNotificationPayload.apns */,
@@ -409,6 +412,7 @@
 				BE504328215CF2A900EBEBEE /* NotificationController.swift in Sources */,
 				BE504326215CF2A900EBEBEE /* ExtensionDelegate.swift in Sources */,
 				6C29EC1C216011F90026BFA0 /* CebelinhoPlay.swift in Sources */,
+				BE0E4C692163AEF400742ED4 /* AnimatedInterfaceController.swift in Sources */,
 				BE50434B215E43DD00EBEBEE /* CoreDataManager.swift in Sources */,
 				BE504324215CF2A900EBEBEE /* InterfaceController.swift in Sources */,
 			);

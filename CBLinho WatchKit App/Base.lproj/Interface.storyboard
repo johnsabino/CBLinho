@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14113" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14313.18" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="k5y-QY-7Ry">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14033"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14238.10"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
@@ -73,6 +73,25 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="344.5"/>
+        </scene>
+        <!--CheckIn-->
+        <scene sceneID="jZf-eN-xuQ">
+            <objects>
+                <controller identifier="CheckIn" id="k5y-QY-7Ry" customClass="AnimatedInterfaceController" customModule="CBLinho_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="99" alignment="center" contentMode="center" layout="vertical" id="mVh-V2-vHp">
+                            <items>
+                                <group height="99" alignment="center" spacing="4" id="ugR-0g-XIy"/>
+                            </items>
+                        </group>
+                        <button width="35" height="26" alignment="left" title="Button" id="tc1-rM-9aa"/>
+                    </items>
+                    <connections>
+                        <outlet property="imageAnimatedGroup" destination="mVh-V2-vHp" id="TbH-2K-1EU"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="570" y="324"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
