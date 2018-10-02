@@ -31,7 +31,8 @@
 		BE50434B215E43DD00EBEBEE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE504349215E43DD00EBEBEE /* CoreDataManager.swift */; };
 		BE50434E215E44D100EBEBEE /* CBLinho.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE50434C215E44D100EBEBEE /* CBLinho.xcdatamodeld */; };
 		BE50434F215E44D100EBEBEE /* CBLinho.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE50434C215E44D100EBEBEE /* CBLinho.xcdatamodeld */; };
-		BECE9D2D2162694800880ABC /* FuncAuxliares.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECE9D2C2162694800880ABC /* FuncAuxliares.swift */; };
+		BE553040216398B000F50E62 /* AnimationEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE55303F216398B000F50E62 /* AnimationEnum.swift */; };
+		BECE9D2D2162694800880ABC /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECE9D2C2162694800880ABC /* Animations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,9 +105,10 @@
 		BE50432C215CF2A900EBEBEE /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		BE504349215E43DD00EBEBEE /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		BE50434D215E44D100EBEBEE /* CBLinho.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CBLinho.xcdatamodel; sourceTree = "<group>"; };
+		BE55303F216398B000F50E62 /* AnimationEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationEnum.swift; sourceTree = "<group>"; };
 		BEA22EF121623A82004675FB /* CBLinho WatchKit App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CBLinho WatchKit App.entitlements"; sourceTree = "<group>"; };
 		BEA22EF221623A8B004675FB /* CBLinho WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CBLinho WatchKit Extension.entitlements"; sourceTree = "<group>"; };
-		BECE9D2C2162694800880ABC /* FuncAuxliares.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuncAuxliares.swift; sourceTree = "<group>"; };
+		BECE9D2C2162694800880ABC /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +143,6 @@
 			children = (
 				BE29FB57216258FD005F9E8D /* MenuInitialViewController.swift */,
 				BE29FB5921625920005F9E8D /* LifeCblinhoViewController.swift */,
-				BECE9D2C2162694800880ABC /* FuncAuxliares.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -170,6 +171,7 @@
 		BE5042FF215CF2A700EBEBEE /* CBLinho */ = {
 			isa = PBXGroup;
 			children = (
+				BE55303E2163988900F50E62 /* Modal */,
 				BE29FB5421625815005F9E8D /* Controllers */,
 				BE29FB51216257D5005F9E8D /* storyBoard */,
 				6C29EC1D21601AD60026BFA0 /* CBLinho.entitlements */,
@@ -225,6 +227,15 @@
 				BE50434C215E44D100EBEBEE /* CBLinho.xcdatamodeld */,
 			);
 			path = CoreDataManager;
+			sourceTree = "<group>";
+		};
+		BE55303E2163988900F50E62 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				BE55303F216398B000F50E62 /* AnimationEnum.swift */,
+				BECE9D2C2162694800880ABC /* Animations.swift */,
+			);
+			path = Modal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,7 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BECE9D2D2162694800880ABC /* FuncAuxliares.swift in Sources */,
+				BECE9D2D2162694800880ABC /* Animations.swift in Sources */,
 				6CC76E2D215FB186001BC157 /* CebelinhoPlay.swift in Sources */,
 				BE50434A215E43DD00EBEBEE /* CoreDataManager.swift in Sources */,
 				BE504303215CF2A700EBEBEE /* ViewController.swift in Sources */,
@@ -385,6 +396,7 @@
 				BE29FB58216258FD005F9E8D /* MenuInitialViewController.swift in Sources */,
 				BE41DD7221639D5800C1367E /* NotificationController.swift in Sources */,
 				BE50434E215E44D100EBEBEE /* CBLinho.xcdatamodeld in Sources */,
+				BE553040216398B000F50E62 /* AnimationEnum.swift in Sources */,
 				BE29FB5A21625920005F9E8D /* LifeCblinhoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
