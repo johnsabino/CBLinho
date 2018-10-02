@@ -81,17 +81,40 @@
                     <items>
                         <group width="1" height="99" alignment="center" contentMode="center" layout="vertical" id="mVh-V2-vHp">
                             <items>
-                                <group height="99" alignment="center" spacing="4" id="ugR-0g-XIy"/>
+                                <group height="0.69999999999999996" alignment="center" spacing="4" id="ugR-0g-XIy"/>
                             </items>
                         </group>
-                        <button width="35" height="26" alignment="left" title="Button" id="tc1-rM-9aa"/>
+                        <group width="136" height="32" alignment="center" verticalAlignment="center" id="Ned-b1-BZw">
+                            <items>
+                                <button width="30" height="30" alignment="left" backgroundImage="iconBall" id="gCR-5K-ras">
+                                    <connections>
+                                        <action selector="play" destination="k5y-QY-7Ry" id="Yto-Qy-FJr"/>
+                                    </connections>
+                                </button>
+                                <button width="30" height="30" alignment="left" backgroundImage="iconFood" id="tc1-rM-9aa">
+                                    <connections>
+                                        <action selector="giveFood" destination="k5y-QY-7Ry" id="zC1-PS-EJo"/>
+                                    </connections>
+                                </button>
+                                <button width="30" height="30" alignment="left" backgroundImage="iconPillow" id="Kzz-Cp-lQN">
+                                    <connections>
+                                        <action selector="sleep" destination="k5y-QY-7Ry" id="bwd-0U-8SE"/>
+                                    </connections>
+                                </button>
+                                <button width="35" height="31" alignment="left" backgroundImage="iconShower" id="ved-OV-1OI">
+                                    <connections>
+                                        <action selector="giveShower" destination="k5y-QY-7Ry" id="UJU-1C-bad"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
                     </items>
                     <connections>
                         <outlet property="imageAnimatedGroup" destination="mVh-V2-vHp" id="TbH-2K-1EU"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="570" y="324"/>
+            <point key="canvasLocation" x="570" y="297"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

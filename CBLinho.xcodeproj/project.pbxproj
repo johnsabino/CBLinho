@@ -10,6 +10,8 @@
 		6C29EC1C216011F90026BFA0 /* CebelinhoPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC76E2C215FB186001BC157 /* CebelinhoPlay.swift */; };
 		6CC76E2D215FB186001BC157 /* CebelinhoPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC76E2C215FB186001BC157 /* CebelinhoPlay.swift */; };
 		BE0E4C692163AEF400742ED4 /* AnimatedInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E4C682163AEF300742ED4 /* AnimatedInterfaceController.swift */; };
+		BE0E4C6B2163BA6200742ED4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE504307215CF2A800EBEBEE /* Assets.xcassets */; };
+		BE0E4C6C2163BFC100742ED4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE504307215CF2A800EBEBEE /* Assets.xcassets */; };
 		BE29FB532162580E005F9E8D /* MenuInitial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE29FB522162580E005F9E8D /* MenuInitial.storyboard */; };
 		BE29FB58216258FD005F9E8D /* MenuInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29FB57216258FD005F9E8D /* MenuInitialViewController.swift */; };
 		BE29FB5A21625920005F9E8D /* LifeCblinhoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29FB5921625920005F9E8D /* LifeCblinhoViewController.swift */; };
@@ -372,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE504318215CF2A800EBEBEE /* Assets.xcassets in Resources */,
+				BE0E4C6C2163BFC100742ED4 /* Assets.xcassets in Resources */,
 				BE504316215CF2A800EBEBEE /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE0E4C6B2163BA6200742ED4 /* Assets.xcassets in Resources */,
 				BE50432A215CF2A900EBEBEE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
