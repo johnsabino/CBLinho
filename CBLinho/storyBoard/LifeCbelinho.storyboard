@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sleep_sprite_04" translatesAutoresizingMaskIntoConstraints="NO" id="EUm-vZ-IIY">
-                                <rect key="frame" x="84" y="325" width="240" height="240"/>
+                                <rect key="frame" x="81" y="325" width="240" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="barFull_sprite_04" translatesAutoresizingMaskIntoConstraints="NO" id="Wq6-sN-MrZ">
@@ -71,7 +71,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMu-dP-7xl">
-                                <rect key="frame" x="17" y="590" width="65" height="65"/>
+                                <rect key="frame" x="16" y="589" width="65" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <size key="titleShadowOffset" width="5" height="17"/>
                                 <state key="normal" image="iconBall"/>
@@ -80,27 +80,27 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7R-B6-Vya">
-                                <rect key="frame" x="90" y="590" width="65" height="65"/>
+                                <rect key="frame" x="103" y="595" width="73" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="iconPillow"/>
                                 <connections>
                                     <action selector="toSleep:" destination="om7-nf-KDY" eventType="touchUpInside" id="e30-wa-bOB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrw-Ep-1MO">
-                                <rect key="frame" x="172" y="553" width="136" height="116"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="iconShower"/>
-                                <connections>
-                                    <action selector="giveShower:" destination="om7-nf-KDY" eventType="touchUpInside" id="kcm-6k-KOZ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0j-YE-IPM">
-                                <rect key="frame" x="261" y="564" width="107" height="91"/>
+                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0j-YE-IPM">
+                                <rect key="frame" x="284" y="594" width="74" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="iconFood"/>
                                 <connections>
                                     <action selector="giveFood:" destination="om7-nf-KDY" eventType="touchUpInside" id="v92-hb-iF4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrw-Ep-1MO">
+                                <rect key="frame" x="211" y="590" width="47" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="iconShower"/>
+                                <connections>
+                                    <action selector="giveShower:" destination="om7-nf-KDY" eventType="touchUpInside" id="kcm-6k-KOZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -109,7 +109,7 @@
                     </view>
                     <connections>
                         <outlet property="background" destination="CyU-Dn-7ME" id="VVU-Dj-b3I"/>
-                        <outlet property="cebelinho" destination="EUm-vZ-IIY" id="eX2-KC-qrt"/>
+                        <outlet property="cebelinhoView" destination="EUm-vZ-IIY" id="fTT-hg-saj"/>
                         <outlet property="happyBar" destination="Wq6-sN-MrZ" id="7vo-N5-SML"/>
                         <outlet property="hungryBar" destination="FD4-DH-O2G" id="sdr-p7-ebI"/>
                         <outlet property="showerBar" destination="Eu0-aa-vfW" id="rH4-he-SIk"/>
@@ -125,9 +125,9 @@
         <image name="background" width="500" height="1000"/>
         <image name="barFull_sprite_04" width="320" height="320"/>
         <image name="iconBall" width="150" height="150"/>
-        <image name="iconFood" width="320" height="320"/>
-        <image name="iconPillow" width="320" height="320"/>
-        <image name="iconShower" width="320" height="320"/>
+        <image name="iconFood" width="259" height="184"/>
+        <image name="iconPillow" width="248" height="159"/>
+        <image name="iconShower" width="126" height="173"/>
         <image name="sleep_sprite_04" width="320" height="320"/>
     </resources>
 </document>
