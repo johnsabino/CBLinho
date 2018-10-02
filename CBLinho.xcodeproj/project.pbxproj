@@ -13,6 +13,7 @@
 		BE29FB58216258FD005F9E8D /* MenuInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29FB57216258FD005F9E8D /* MenuInitialViewController.swift */; };
 		BE29FB5A21625920005F9E8D /* LifeCblinhoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29FB5921625920005F9E8D /* LifeCblinhoViewController.swift */; };
 		BE29FB5C21625EEF005F9E8D /* LifeCBelinho.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE29FB5B21625EEF005F9E8D /* LifeCBelinho.storyboard */; };
+		BE41DD7221639D5800C1367E /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE41DD7121639D5800C1367E /* NotificationController.swift */; };
 		BE504301215CF2A700EBEBEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE504300215CF2A700EBEBEE /* AppDelegate.swift */; };
 		BE504303215CF2A700EBEBEE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE504302215CF2A700EBEBEE /* ViewController.swift */; };
 		BE504306215CF2A700EBEBEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE504304215CF2A700EBEBEE /* Main.storyboard */; };
@@ -82,6 +83,7 @@
 		BE29FB57216258FD005F9E8D /* MenuInitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInitialViewController.swift; sourceTree = "<group>"; };
 		BE29FB5921625920005F9E8D /* LifeCblinhoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeCblinhoViewController.swift; sourceTree = "<group>"; };
 		BE29FB5B21625EEF005F9E8D /* LifeCBelinho.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LifeCBelinho.storyboard; sourceTree = "<group>"; };
+		BE41DD7121639D5800C1367E /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		BE5042FD215CF2A700EBEBEE /* CBLinho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBLinho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE504300215CF2A700EBEBEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE504302215CF2A700EBEBEE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				BE504307215CF2A800EBEBEE /* Assets.xcassets */,
 				BE504309215CF2A800EBEBEE /* LaunchScreen.storyboard */,
 				BE50430C215CF2A800EBEBEE /* Info.plist */,
+				BE41DD7121639D5800C1367E /* NotificationController.swift */,
 			);
 			path = CBLinho;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				BE504303215CF2A700EBEBEE /* ViewController.swift in Sources */,
 				BE504301215CF2A700EBEBEE /* AppDelegate.swift in Sources */,
 				BE29FB58216258FD005F9E8D /* MenuInitialViewController.swift in Sources */,
+				BE41DD7221639D5800C1367E /* NotificationController.swift in Sources */,
 				BE50434E215E44D100EBEBEE /* CBLinho.xcdatamodeld in Sources */,
 				BE29FB5A21625920005F9E8D /* LifeCblinhoViewController.swift in Sources */,
 			);

@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -21,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         UIApplication.shared.statusBarStyle = .lightContent
+        
+        NotificationController.requestAuthorizationNotification()
+        
         return true
     }
 
@@ -50,6 +54,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("salvando data quando finaliza")
         cebelinho.lastClosedIOS = CFAbsoluteTimeGetCurrent()
         
+        var lowerAttribute = CebelinhoPlay.getLowerAttribute()/2
+        
+        var timeLeft = Int(lowerAttribute)
+        print(Double(lowerAttribute/2))
+
+        if timeLeft <= 1{
+            timeLeft = 10
+        }
+        
+        NotificationController.scheduleNotification(withTime: Double(timeLeft))
         CoreDataManager.saveContext()
     }
 

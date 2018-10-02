@@ -28,15 +28,16 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         
         CoreDataManager.saveContext()
         
-//        var lowerAttribute = CebelinhoPlay.getLowerAttribute()
+//        var lowerAttribute = CebelinhoPlay.getLowerAttribute()/2
+//        
+//        var timeLeft = Int(lowerAttribute)
 //        print(Double(lowerAttribute/2))
 //
-//        if lowerAttribute <= 1{
-//            lowerAttribute = 15
+//        if timeLeft <= 1{
+//            timeLeft = 10
 //        }
         
-        
-        //NotificationController.sendNotification(withTime: Double(lowerAttribute/2))
+        //NotificationController.sendNotification(withTime: Double(timeLeft))
     }
 
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {

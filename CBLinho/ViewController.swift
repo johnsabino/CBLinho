@@ -8,7 +8,7 @@
 
 import UIKit
 import WatchConnectivity
-import HealthKit
+
 
 class ViewController: UIViewController {
     
@@ -29,7 +29,6 @@ class ViewController: UIViewController {
     var dirtyStr = "100"
     var sleepyStr = "100"
     
-    let healthStore = HKHealthStore()
     
     @IBOutlet weak var messageLabel: UILabel!
     
@@ -125,9 +124,6 @@ class ViewController: UIViewController {
             
             print("starting watch app")
             
-            self.healthStore.startWatchApp(with: HKWorkoutConfiguration(), completion: { 	(success, error) in 
-                
-            })
             
         }
         
