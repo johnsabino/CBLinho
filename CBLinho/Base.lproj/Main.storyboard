@@ -106,6 +106,21 @@
                                     <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O2I-Ee-fNb"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlQ-Bo-sLX">
+                                <rect key="frame" x="42" y="525" width="181" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAS-O9-RmH">
+                                <rect key="frame" x="238" y="516" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="getResponse:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BiO-tD-5bm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Uee-0j-aNJ"/>
@@ -114,6 +129,7 @@
                         <outlet property="boringLabel" destination="aGX-eO-YcU" id="bDf-FE-quX"/>
                         <outlet property="dirtyLabel" destination="UXO-wc-oON" id="73K-sl-Z4j"/>
                         <outlet property="hungryLabel" destination="V0V-P1-TuM" id="lRx-eJ-egt"/>
+                        <outlet property="messageLabel" destination="RlQ-Bo-sLX" id="ybf-4i-Pfp"/>
                         <outlet property="sleepyLabel" destination="I9y-Dd-qTx" id="38s-4A-Usa"/>
                     </connections>
                 </viewController>

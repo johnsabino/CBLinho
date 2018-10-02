@@ -58,7 +58,7 @@
                                 </group>
                                 <button width="1" alignment="left" title="notification" id="GiF-v8-pbc">
                                     <connections>
-                                        <action selector="sendNot" destination="AgC-eL-Hgc" id="p2J-Y0-jzV"/>
+                                        <action selector="sendNot" destination="AgC-eL-Hgc" id="8tx-fC-sfo"/>
                                     </connections>
                                 </button>
                             </items>

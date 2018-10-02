@@ -36,6 +36,7 @@ class CebelinhoPlay {
         let fetch : NSFetchRequest<Cebelinho> = Cebelinho.fetchRequest()
     
         let cebelinho = CoreDataManager.fetch(fetch).first
+        
         return cebelinho!
 
     }
@@ -47,7 +48,7 @@ class CebelinhoPlay {
         
         cebelinho = CoreDataManager.fetch(fetch).first
         
-        let statusLosted = CFAbsoluteTimeGetCurrent() - (cebelinho?.lastModify)!
+        let statusLosted = CFAbsoluteTimeGetCurrent() - (cebelinho?.lastModifyIOS)!
         
         cebelinho?.boring -= statusLosted
         cebelinho?.dirty -= statusLosted

@@ -29,7 +29,7 @@ class InterfaceController: WKInterfaceController {
         super.awake(withContext: context)
     
         CebelinhoPlay.start()
-        //CebelinhoPlay.loosingStatusByTime()
+        CebelinhoPlay.loosingStatusByTime()
         cebelinho = CebelinhoPlay.getCebeliho()
         Timer.scheduledTimer(timeInterval: 2, target: self,
                              selector: #selector(updateUI), userInfo: nil, repeats: true)
@@ -40,41 +40,52 @@ class InterfaceController: WKInterfaceController {
             session.activate()
         }
 
+        
+        sendWatchMessage()
     }
     
     @objc func updateUI(){
-       // boringStr = String((cebelinho?.boring)!)
-        boringStr = messageReceive["Boring"]!
-       // hungryStr = String((cebelinho?.hungry)!)
-        hungryStr = messageReceive["Hungry"]!
-       // dirtyStr = String((cebelinho?.dirty)!)
-        dirtyStr = messageReceive["Sleepy"]!
-       // sleepyStr = String((cebelinho?.sleepy)!)
-        sleepyStr = messageReceive["Dirty"]!
+        boringStr = String((cebelinho?.boring)!)
+        //boringStr = messageReceive["Boring"]!
+        hungryStr = String((cebelinho?.hungry)!)
+        //hungryStr = messageReceive["Hungry"]!
+        dirtyStr = String((cebelinho?.dirty)!)
+        //dirtyStr = messageReceive["Sleepy"]!
+        sleepyStr = String((cebelinho?.sleepy)!)
+        //sleepyStr = messageReceive["Dirty"]!
+        
         self.hungryLabel.setText(hungryStr)
         self.sleepyLabel.setText(sleepyStr)
         self.boringLabel.setText(boringStr)
         self.dirtyLabel.setText(dirtyStr)
         
-        sendWatchMessage()
+         //sendWatchMessage()
     }
     
     
     @IBAction func giveFood() {
+        cebelinho?.lastModifyWatch = CFAbsoluteTimeGetCurrent()
         CebelinhoPlay.giveAttributes(attr: .food)
         self.hungryLabel.setText(String((cebelinho?.hungry)!))
+        sendWatchMessage()
     }
     @IBAction func giveShower() {
+        cebelinho?.lastModifyWatch = CFAbsoluteTimeGetCurrent()
         CebelinhoPlay.giveAttributes(attr: .shower)
         self.dirtyLabel.setText(String((cebelinho?.dirty)!))
+        sendWatchMessage()
     }
     @IBAction func play() {
+        cebelinho?.lastModifyWatch = CFAbsoluteTimeGetCurrent()
         CebelinhoPlay.giveAttributes(attr: .play)
         self.boringLabel.setText(String((cebelinho?.boring)!))
+        sendWatchMessage()
     }
     @IBAction func sleep() {
+        cebelinho?.lastModifyWatch = CFAbsoluteTimeGetCurrent()
         CebelinhoPlay.giveAttributes(attr: .sleep)
         self.sleepyLabel.setText(String((cebelinho?.sleepy)!))
+        sendWatchMessage()
     }
     
     
@@ -88,9 +99,9 @@ class InterfaceController: WKInterfaceController {
         
         super.didDeactivate()
     }
-
+    
     @IBAction func sendNot() {
-        
+        sendWatchMessage()
     }
     
     func sendWatchMessage() {
@@ -106,10 +117,30 @@ class InterfaceController: WKInterfaceController {
         if (WCSession.default.isReachable) {
             // this is a meaningless message, but it's enough for our purposes
             
-            let message = ["Boring": "TESTING MESSAGE"]
-            print(message)
-         
-            WCSession.default.sendMessage(message, replyHandler: nil)
+            //let date = CFAbsoluteTimeGetCurrent()
+            
+            let bStr = String((cebelinho?.boring)!)
+            let hStr = String((cebelinho?.hungry)!)
+            let dStr = String((cebelinho?.dirty)!)
+            let sStr = String((cebelinho?.sleepy)!)
+            
+            let message = ["Boring": bStr, "Hungry": hStr, "Sleepy": sStr,"Dirty": dStr, "lastModifyWatch": String((cebelinho?.lastModifyWatch)!)]
+            
+            print("enviando: ", message)
+            WCSession.default.sendMessage(message, replyHandler: { (reply) in
+                
+                print("resposta: ",reply)
+                
+                self.cebelinho?.boring = Double(reply["Boring"] as! String)!
+                self.cebelinho?.hungry = Double(reply["Hungry"] as! String)!
+                self.cebelinho?.dirty = Double(reply["Dirty"] as! String)!
+                self.cebelinho?.sleepy = Double(reply["Sleepy"] as! String)!
+                
+                
+            }, errorHandler: { (error) in
+                print(error)
+            })
+            
         }
         
         // update our rate limiting property
@@ -119,17 +150,33 @@ class InterfaceController: WKInterfaceController {
 }
 extension InterfaceController: WCSessionDelegate{
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
+
     }
-    func sessionReachabilityDidChange(_ session: WCSession) {
-        if (!session.isReachable){
-            CebelinhoPlay.syncAttributes(message: messageReceive)
-        }
+//    func sessionReachabilityDidChange(_ session: WCSession) {
+//        if (!session.isReachable){
+//            CebelinhoPlay.syncAttributes(message: messageReceive)
+//        }
+//    }
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        
+//        DispatchQueue.main.async {
+//            self.messageReceive = applicationContext as! [String : String]
+//            print("recebendo mensagem: ", self.messageReceive)
+//        }
+
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        messageReceive = message as! [String : String]
-        print("recebendo mensagem: ", messageReceive)
         
+        cebelinho?.boring = Double(message["Boring"] as! String)!
+        cebelinho?.hungry = Double(message["Hungry"] as! String)!
+        cebelinho?.dirty = Double(message["Dirty"] as! String)!
+        cebelinho?.sleepy = Double(message["Sleepy"] as! String)!
     }
+    
+//    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+//        print("recebido:",message)
+//        replyHandler(["Resposta": "RESPONDIDO2"])
+//    }
+
 }
