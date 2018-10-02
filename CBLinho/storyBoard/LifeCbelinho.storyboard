@@ -18,29 +18,90 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background1Big" translatesAutoresizingMaskIntoConstraints="NO" id="CyU-Dn-7ME">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="CyU-Dn-7ME">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="New Piskel (1)" translatesAutoresizingMaskIntoConstraints="NO" id="EUm-vZ-IIY">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sleep_sprite_04" translatesAutoresizingMaskIntoConstraints="NO" id="EUm-vZ-IIY">
                                 <rect key="frame" x="84" y="325" width="240" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="barsprite_00" translatesAutoresizingMaskIntoConstraints="NO" id="Wq6-sN-MrZ">
-                                <rect key="frame" x="-6" y="26" width="109" height="62"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="barFull_sprite_04" translatesAutoresizingMaskIntoConstraints="NO" id="Wq6-sN-MrZ">
+                                <rect key="frame" x="0.0" y="26" width="82" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hungry" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZQ-aJ-YwN">
-                                <rect key="frame" x="10" y="67" width="77" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Happy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZQ-aJ-YwN">
+                                <rect key="frame" x="0.0" y="45" width="77" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="barFull_sprite_04" translatesAutoresizingMaskIntoConstraints="NO" id="qZD-5W-sto">
+                                <rect key="frame" x="0.0" y="69" width="82" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sleep" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzv-kh-aJp">
+                                <rect key="frame" x="0.0" y="88" width="77" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="barFull_sprite_04" translatesAutoresizingMaskIntoConstraints="NO" id="FD4-DH-O2G">
+                                <rect key="frame" x="0.0" y="112" width="82" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hungry" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAd-zb-LOg">
+                                <rect key="frame" x="0.0" y="131" width="77" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="barFull_sprite_04" translatesAutoresizingMaskIntoConstraints="NO" id="Eu0-aa-vfW">
+                                <rect key="frame" x="0.0" y="155" width="82" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shower" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wnt-T0-jtO">
+                                <rect key="frame" x="0.0" y="174" width="77" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMu-dP-7xl">
-                                <rect key="frame" x="10" y="590" width="77" height="77"/>
+                                <rect key="frame" x="17" y="590" width="65" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="sprite_0"/>
+                                <size key="titleShadowOffset" width="5" height="17"/>
+                                <state key="normal" image="iconBall"/>
+                                <connections>
+                                    <action selector="play:" destination="om7-nf-KDY" eventType="touchUpInside" id="Yn3-Db-Nf8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7R-B6-Vya">
+                                <rect key="frame" x="90" y="590" width="65" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="iconPillow"/>
+                                <connections>
+                                    <action selector="toSleep:" destination="om7-nf-KDY" eventType="touchUpInside" id="e30-wa-bOB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrw-Ep-1MO">
+                                <rect key="frame" x="172" y="553" width="136" height="116"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="iconShower"/>
+                                <connections>
+                                    <action selector="giveShower:" destination="om7-nf-KDY" eventType="touchUpInside" id="kcm-6k-KOZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0j-YE-IPM">
+                                <rect key="frame" x="261" y="564" width="107" height="91"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="iconFood"/>
+                                <connections>
+                                    <action selector="giveFood:" destination="om7-nf-KDY" eventType="touchUpInside" id="v92-hb-iF4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -49,6 +110,10 @@
                     <connections>
                         <outlet property="background" destination="CyU-Dn-7ME" id="VVU-Dj-b3I"/>
                         <outlet property="cebelinho" destination="EUm-vZ-IIY" id="eX2-KC-qrt"/>
+                        <outlet property="happyBar" destination="Wq6-sN-MrZ" id="7vo-N5-SML"/>
+                        <outlet property="hungryBar" destination="FD4-DH-O2G" id="sdr-p7-ebI"/>
+                        <outlet property="showerBar" destination="Eu0-aa-vfW" id="rH4-he-SIk"/>
+                        <outlet property="sleepBar" destination="qZD-5W-sto" id="l8p-Jy-BJs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggL-jA-eCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -57,9 +122,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="New Piskel (1)" width="320" height="320"/>
-        <image name="background1Big" width="500" height="1000"/>
-        <image name="barsprite_00" width="320" height="320"/>
-        <image name="sprite_0" width="320" height="320"/>
+        <image name="background" width="500" height="1000"/>
+        <image name="barFull_sprite_04" width="320" height="320"/>
+        <image name="iconBall" width="150" height="150"/>
+        <image name="iconFood" width="320" height="320"/>
+        <image name="iconPillow" width="320" height="320"/>
+        <image name="iconShower" width="320" height="320"/>
+        <image name="sleep_sprite_04" width="320" height="320"/>
     </resources>
 </document>
