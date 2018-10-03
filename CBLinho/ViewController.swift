@@ -67,8 +67,7 @@ class ViewController: UIViewController {
             self.sleepyLabel.text = sleepyStr
             self.boringLabel.text = boringStr
             self.dirtyLabel.text = dirtyStr
-            
-           // sendWatchMessage()
+
         case .background:
             print("App is backgrounded. Cebelinho hungry = \((cebelinho?.hungry)!)")
             print("Background time remaining = \(UIApplication.shared.backgroundTimeRemaining) seconds")
@@ -105,23 +104,16 @@ class ViewController: UIViewController {
             WCSession.default.sendMessage(message, replyHandler: nil) { (error) in
                 print(error)
             }
-//            WCSession.default.sendMessage(message, replyHandler: { (reply) in
-//                self.messageLabel.text = reply.first?.value as? String
-//                print("resposta: ",reply)
-//            }, errorHandler: { (error) in
-//                print(error)
-//            })
-            
         
-            
-            
+        
+
         }
 
     }
 
     @IBAction func giveFood(_ sender: Any) {
         cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
-        CebelinhoPlay.giveAttributes(attr: .food)
+        CebelinhoPlay.giveAttributes(attr: .hungry)
         sendWatchMessage()
     }
     @IBAction func sleep(_ sender: Any) {
@@ -136,7 +128,7 @@ class ViewController: UIViewController {
     }
     @IBAction func play(_ sender: Any) {
         cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
-        CebelinhoPlay.giveAttributes(attr: .play)
+        CebelinhoPlay.giveAttributes(attr: .happy)
         sendWatchMessage()
     }
     

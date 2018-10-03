@@ -62,7 +62,7 @@ class InterfaceController: WKInterfaceController {
     
     @IBAction func giveFood() {
         cebelinho?.lastModifyWatch = CFAbsoluteTimeGetCurrent()
-        CebelinhoPlay.giveAttributes(attr: .food)
+        CebelinhoPlay.giveAttributes(attr: .hungry)
         self.hungryLabel.setText(String((cebelinho?.hungry)!))
         Connectivity.connectivity.sendMessage()
 
@@ -76,7 +76,7 @@ class InterfaceController: WKInterfaceController {
     }
     @IBAction func play() {
         cebelinho?.lastModifyWatch = CFAbsoluteTimeGetCurrent()
-        CebelinhoPlay.giveAttributes(attr: .play)
+        CebelinhoPlay.giveAttributes(attr: .happy)
         self.boringLabel.setText(String((cebelinho?.boring)!))
          Connectivity.connectivity.sendMessage()
 

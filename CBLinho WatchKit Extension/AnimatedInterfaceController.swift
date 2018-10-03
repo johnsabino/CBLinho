@@ -123,7 +123,7 @@ class AnimatedInterfaceController: WKInterfaceController,  WCSessionDelegate{
     
     @IBAction func giveFood() {
         cebelinho?.lastModifyWatch = CFAbsoluteTimeGetCurrent()
-        CebelinhoPlay.giveAttributes(attr: .food)
+        CebelinhoPlay.giveAttributes(attr: .hungry)
         sendWatchMessage()
     }
     @IBAction func giveShower() {
@@ -133,7 +133,7 @@ class AnimatedInterfaceController: WKInterfaceController,  WCSessionDelegate{
     }
     @IBAction func play() {
         cebelinho?.lastModifyWatch = CFAbsoluteTimeGetCurrent()
-        CebelinhoPlay.giveAttributes(attr: .play)
+        CebelinhoPlay.giveAttributes(attr: .happy)
         sendWatchMessage()
     }
     @IBAction func sleep() {

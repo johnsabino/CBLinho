@@ -20,7 +20,7 @@ class LifeCblinhoViewController: UIViewController {
     @IBOutlet weak var cebelinhoView: UIImageView!
     
     let animacoes = Animations.init()
-    var sleep: Bool = false
+    var sleepBool: Bool = false
     
     var cebelinho : Cebelinho?
     
@@ -33,26 +33,27 @@ class LifeCblinhoViewController: UIViewController {
     var sleepyStr = "100"
     
     var messageReceive : [String : String] = ["Boring": "100", "Hungry": "100", "Sleepy": "100","Dirty": "100"]
-    //backgroundTask
-    var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //Carregar interface
         background.image = #imageLiteral(resourceName: "background")
         Animations.animationGiff(imagens: animacoes.select[AnimationCase.padrao]!, viewAnimation: cebelinhoView)
+        
         Animations.animationGiff(imagens: animacoes.select[AnimationCase.barFull]!, viewAnimation: happyBar)
+        
         Animations.animationGiff(imagens: animacoes.select[AnimationCase.barFull]!, viewAnimation:sleepBar)
+        
         Animations.animationGiff(imagens: animacoes.select[AnimationCase.barFull]!, viewAnimation: hungryBar)
+        
         Animations.animationGiff(imagens: animacoes.select[AnimationCase.barFull]!, viewAnimation: showerBar)
         
         
-        
-        //CebelinhoPlay.loosingStatusByTime()
+        CebelinhoPlay.start()
         cebelinho = CebelinhoPlay.getCebeliho()
-        Timer.scheduledTimer(timeInterval: 2, target: self,
+        Timer.scheduledTimer(timeInterval: 1, target: self,
                              selector: #selector(updateUI), userInfo: nil, repeats: true)
-        registerBackgroundTask()
         
         if (WCSession.isSupported()) {
             let session = WCSession.default
@@ -62,61 +63,83 @@ class LifeCblinhoViewController: UIViewController {
     }
 
     @objc func updateUI(){
-        switch UIApplication.shared.applicationState {
-        case .active:
+      
+            //boringStr = String((cebelinho?.boring)!)
+            //hungryStr = String((cebelinho?.hungry)!)
+            //dirtyStr = String((cebelinho?.dirty)!)
+            //sleepyStr = String((cebelinho?.sleepy)!)
             
-            boringStr = String((cebelinho?.boring)!)
-            hungryStr = String((cebelinho?.hungry)!)
-            dirtyStr = String((cebelinho?.dirty)!)
-            sleepyStr = String((cebelinho?.sleepy)!)
-            
-            
-            
+        
 //            self.hungryLabel.text = hungryStr
 //            self.sleepyLabel.text = sleepyStr
 //            self.boringLabel.text = boringStr
 //            self.dirtyLabel.text = dirtyStr
+        
+        updateStatusBars(attribute: .happy)
+        updateStatusBars(attribute: .hungry)
+        updateStatusBars(attribute: .shower)
+        updateStatusBars(attribute: .sleep)
+        
+        if((cebelinho?.boring)! >= 35 && (cebelinho?.dirty)! >= 35 && (cebelinho?.hungry)! >= 35 && (cebelinho?.sleepy)! >= 35){
             
-        // sendWatchMessage()
-        case .background:
-            print("App is backgrounded. Cebelinho hungry = \((cebelinho?.hungry)!)")
-            print("Background time remaining = \(UIApplication.shared.backgroundTimeRemaining) seconds")
-        case .inactive:
-            break
+            Animations.animationGiff(imagens: animacoes.select[AnimationCase.padrao]!, viewAnimation: cebelinhoView)
+        }
+    }
+    
+    func updateStatusBars(attribute : Attribute){
+        
+        var attrDouble = 0.0
+        var viewAnim : UIImageView?
+        var sadCBLinho : AnimationCase = .padrao
+        
+        switch attribute {
+            case .happy:
+                attrDouble = (cebelinho?.boring)!
+                viewAnim = happyBar
+            case .hungry:
+                attrDouble = (cebelinho?.hungry)!
+                viewAnim = hungryBar
+                sadCBLinho = .hungry
+            case .sleep:
+                attrDouble = (cebelinho?.sleepy)!
+                viewAnim = sleepBar
+                sadCBLinho = .sleepy
+            case .shower:
+                attrDouble = (cebelinho?.dirty)!
+                viewAnim = showerBar
+                sadCBLinho = .dirty
         }
         
+        if(attrDouble <= 100.0 && attrDouble >= 90.0){
+            Animations.animationGiff(imagens: animacoes.select[AnimationCase.barFull]!, viewAnimation: viewAnim!)
+            
+        }else if(attrDouble <= 89 && attrDouble >= 60.0){
+            Animations.animationGiff(imagens: animacoes.select[AnimationCase.almostBarFull]!, viewAnimation: viewAnim!)
+            
+        }else if(attrDouble <= 59 && attrDouble >= 35){
+            Animations.animationGiff(imagens: animacoes.select[AnimationCase.barHalf]!, viewAnimation: viewAnim!)
+            
+            Animations.animationGiff(imagens: animacoes.select[sadCBLinho]!, viewAnimation: cebelinhoView)
+            
+        }else if(attrDouble <= 34 && attrDouble >= 0){
+            Animations.animationGiff(imagens: animacoes.select[AnimationCase.almostBarEmpty]!, viewAnimation: viewAnim!)
+            
+            Animations.animationGiff(imagens: animacoes.select[sadCBLinho]!, viewAnimation: cebelinhoView)
+        }
+        
+        
+        
     }
+    
     func verificStatus(status: Double){
         
     }
     
-    func registerBackgroundTask() {
-        backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
-            self?.endBackgroundTask()
-        }
-        assert(backgroundTask != UIBackgroundTaskInvalid)
-    }
-    
-    func endBackgroundTask() {
-        print("Background task ended.")
-        UIApplication.shared.endBackgroundTask(backgroundTask)
-        backgroundTask = UIBackgroundTaskInvalid
-    }
-    
     func sendWatchMessage() {
-        
-        //        let currentTime = CFAbsoluteTimeGetCurrent()
-        //
-        //        // if less than half a second has passed, bail out
-        //        if lastMessage + 0.5 > currentTime {
-        //            return
-        //        }
         
         // send a message to the watch if it's reachable
         if (WCSession.default.isReachable) {
-            // this is a meaningless message, but it's enough for our purposes
-            
-            
+          
             let bStr = String((cebelinho?.boring)!)
             let hStr = String((cebelinho?.hungry)!)
             let dStr = String((cebelinho?.dirty)!)
@@ -127,46 +150,53 @@ class LifeCblinhoViewController: UIViewController {
             WCSession.default.sendMessage(message, replyHandler: nil) { (error) in
                 print(error)
             }
-            //            WCSession.default.sendMessage(message, replyHandler: { (reply) in
-            //                self.messageLabel.text = reply.first?.value as? String
-            //                print("resposta: ",reply)
-            //            }, errorHandler: { (error) in
-            //                print(error)
-            //            })
-            
-            print("starting watch app")
-            
-            
         }
-        
-        // update our rate limiting property
-        // lastMessage = CFAbsoluteTimeGetCurrent()
     }
+    
     @IBAction func play(_ sender: Any) {
-        self.sleep = true
+        //give attributes and update animation
+        self.sleepBool = true
         Animations.animationGiff(imagens: animacoes.select[AnimationCase.barFull]!, viewAnimation: happyBar)
+        
+        cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
+        CebelinhoPlay.giveAttributes(attr: .happy)
+        //send updates to watch
+        sendWatchMessage()
         
     }
     @IBAction func toSleep(_ sender: Any) {
-         self.sleep = !sleep
-         Animations.animationGiff(imagens: animacoes.select[AnimationCase.barFull]!, viewAnimation:sleepBar)
-        if sleep == false {
+        
+         self.sleepBool = !sleepBool
+        
+        if sleepBool == false {
              Animations.animationGiff(imagens: animacoes.select[AnimationCase.sleepy]!, viewAnimation: cebelinhoView)
         }else{
             Animations.animationGiff(imagens: animacoes.select[AnimationCase.padrao]!, viewAnimation: cebelinhoView)
         }
         
+        cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
+        CebelinhoPlay.giveAttributes(attr: .sleep)
+        sendWatchMessage()
+        
     }
     
     @IBAction func giveShower(_ sender: Any) {
-        self.sleep = true
-        Animations.animationGiff(imagens: animacoes.select[AnimationCase.barFull]!, viewAnimation: showerBar)
+        self.sleepBool = true
+        
+        
+        cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
+        CebelinhoPlay.giveAttributes(attr: .shower)
+        sendWatchMessage()
         
     }
     
     @IBAction func giveFood(_ sender: Any) {
-        self.sleep = true
-        Animations.animationGiff(imagens: animacoes.select[AnimationCase.barFull]!, viewAnimation: hungryBar)
+        self.sleepBool = true
+        
+        
+        cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
+        CebelinhoPlay.giveAttributes(attr: .hungry)
+        sendWatchMessage()
     }
     
 
@@ -184,28 +214,16 @@ extension LifeCblinhoViewController: WCSessionDelegate {
         
     }
     
-    //    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-    //
-    //        DispatchQueue.main.async {
-    //            self.messageLabel.text = (applicationContext.first?.value) as? String
-    //        }
-    //
-    //        print("Mensagem recebida ", (applicationContext.first?.value)!)
-    //    }
-    
-    //    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-    //        messageReceive = message as! [String : String]
-    //        print("recebendo mensagem: ", messageReceive)
-    //    }
-    
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         
-        let lastModifyWatch = Double(message["lastModifyWatch"] as! String)!
+        let lastModifyWatch = message["lastModifyWatch"] as! Double
         
         
-        cebelinho?.lastModifyWatch = lastModifyWatch
+        //cebelinho?.lastModifyWatch = lastModifyWatch
         
-        if lastModifyWatch > (cebelinho?.lastModifyIOS)!{
+        print(lastModifyWatch , " - ", (cebelinho?.lastModifyIOS)!)
+        if lastModifyWatch > (cebelinho?.lastModifyIOS)! || message["firstTimeWatch"] as! Bool == true{
+            
             
             cebelinho?.boring = Double(message["Boring"] as! String)!
             cebelinho?.hungry = Double(message["Hungry"] as! String)!
@@ -222,9 +240,7 @@ extension LifeCblinhoViewController: WCSessionDelegate {
         let reply = ["Boring": bStr, "Hungry": hStr, "Sleepy": sStr,"Dirty": dStr, "lastModifyIOS": String(CFAbsoluteTimeGetCurrent())]
         
         replyHandler(reply)
-        
-        
-        //replyHandler(["Resposta": "RESPONDIDO"])
+
     }
 }
 

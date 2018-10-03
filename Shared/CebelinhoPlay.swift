@@ -11,9 +11,9 @@ import CoreData
 import WatchKit
 
 enum Attribute {
-    case food
+    case hungry
     case shower
-    case play
+    case happy
     case sleep
 }
 
@@ -129,11 +129,11 @@ class CebelinhoPlay {
     static func giveAttributes(attr : Attribute){
         
         switch attr {
-        case .food:
+        case .hungry:
             cebelinho?.hungry = 100
         case .shower:
             cebelinho?.dirty = 100
-        case .play:
+        case .happy:
             cebelinho?.boring = 100
         case .sleep:
             cebelinho?.sleepy = 100
