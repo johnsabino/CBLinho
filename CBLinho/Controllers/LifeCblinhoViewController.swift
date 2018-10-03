@@ -157,7 +157,7 @@ class LifeCblinhoViewController: UIViewController {
     func clickGiveAttributes(attr : Attribute){
         cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
         CebelinhoPlay.giveAttributes(attr: attr)
-        sendWatchMessage()
+        sendMessageToWatch()
     }
 
 }
@@ -165,7 +165,7 @@ class LifeCblinhoViewController: UIViewController {
 //Connectivity with watchOS
 extension LifeCblinhoViewController: WCSessionDelegate {
     
-    func sendWatchMessage() {
+    func sendMessageToWatch() {
         // send a message to the watch if it's reachable
         if (WCSession.default.isReachable) {
             
@@ -201,7 +201,7 @@ extension LifeCblinhoViewController: WCSessionDelegate {
             
         }
         
-        //else, get the attributes of iOS App and send to watch 
+        //else, get the attributes of iOS App and send to watch
         let bStr = String((cebelinho?.boring)!)
         let hStr = String((cebelinho?.hungry)!)
         let dStr = String((cebelinho?.dirty)!)

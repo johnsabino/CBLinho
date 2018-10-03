@@ -27,7 +27,7 @@ class Connectivity : NSObject, WCSessionDelegate {
         }
     }
     //send message to iPhone to sync core data
-    func sendMessage(){
+    func syncAttributes(){
         
         let cebelinho = CebelinhoPlay.getCebeliho()
         

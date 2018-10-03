@@ -106,7 +106,7 @@ class AnimatedInterfaceController: WKInterfaceController{
     func clickGiveAttributes(attr : Attribute){
         cebelinho?.lastModifyWatch = CFAbsoluteTimeGetCurrent()
         CebelinhoPlay.giveAttributes(attr: attr)
-        Connectivity.connectivity.sendMessage()
+        Connectivity.connectivity.syncAttributes()
     }
 
 }
@@ -114,7 +114,7 @@ class AnimatedInterfaceController: WKInterfaceController{
 //Connectivity with iPhone
 extension AnimatedInterfaceController : WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        Connectivity.connectivity.sendMessage()
+        Connectivity.connectivity.syncAttributes()
     }
     
     //when receive message from iPhone, update core data

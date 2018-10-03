@@ -25,7 +25,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         CebelinhoPlay.start()
         CebelinhoPlay.loosingStatusByTime()
         CebelinhoPlay.updateAttributesOnActive(device: .watch)
-        Connectivity.connectivity.sendMessage()
+        Connectivity.connectivity.syncAttributes()
         
         
     }
