@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14113" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14113" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="k5y-QY-7Ry">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,103 +9,79 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14033"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
-        <scene sceneID="aou-V4-d1y">
-            <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="CBLinho_WatchKit_App" customModuleProvider="target">
-                    <items>
-                        <group width="1" alignment="left" layout="vertical" id="POd-5B-3kx">
-                            <items>
-                                <group width="1" alignment="left" id="V4e-TF-Vg0">
-                                    <items>
-                                        <label width="0.5" height="1" alignment="left" text="100" textAlignment="center" id="neU-WJ-6fV"/>
-                                        <button width="0.5" alignment="right" title="Dar comida" id="Yoj-Di-GAF">
-                                            <connections>
-                                                <action selector="giveFood" destination="AgC-eL-Hgc" id="LSA-Pg-bi9"/>
-                                            </connections>
-                                        </button>
-                                    </items>
-                                </group>
-                                <group width="1" alignment="left" id="O8E-qx-Vjp">
-                                    <items>
-                                        <label width="0.5" height="1" alignment="left" text="100" textAlignment="center" id="Fk5-O1-yoC"/>
-                                        <button width="0.5" alignment="right" title="Dar banho" id="4u7-YC-qeJ">
-                                            <connections>
-                                                <action selector="giveShower" destination="AgC-eL-Hgc" id="fO0-23-GqW"/>
-                                            </connections>
-                                        </button>
-                                    </items>
-                                </group>
-                                <group width="1" alignment="left" id="Uso-So-Sp2">
-                                    <items>
-                                        <label width="0.5" height="1" alignment="left" text="100" textAlignment="center" id="BDL-jA-y5E"/>
-                                        <button width="0.5" alignment="left" title="Brincar" id="nHg-Bh-gt9">
-                                            <connections>
-                                                <action selector="play" destination="AgC-eL-Hgc" id="N6K-4v-hrJ"/>
-                                            </connections>
-                                        </button>
-                                    </items>
-                                </group>
-                                <group width="1" alignment="left" id="gzY-3P-mqi">
-                                    <items>
-                                        <label width="0.5" height="1" alignment="left" text="100" textAlignment="center" id="NQ1-UT-zkV"/>
-                                        <button width="0.5" alignment="left" title="Dormir" id="bcR-Kx-d0z">
-                                            <connections>
-                                                <action selector="sleep" destination="AgC-eL-Hgc" id="FyR-Yc-VCp"/>
-                                            </connections>
-                                        </button>
-                                    </items>
-                                </group>
-                            </items>
-                        </group>
-                    </items>
-                    <connections>
-                        <outlet property="boringLabel" destination="BDL-jA-y5E" id="j1a-Rz-n4M"/>
-                        <outlet property="dirtyLabel" destination="Fk5-O1-yoC" id="GLc-q1-STn"/>
-                        <outlet property="hungryLabel" destination="neU-WJ-6fV" id="tTL-Ga-bDc"/>
-                        <outlet property="sleepyLabel" destination="NQ1-UT-zkV" id="eIQ-1b-OvX"/>
-                    </connections>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="220" y="344.5"/>
-        </scene>
         <!--CheckIn-->
         <scene sceneID="jZf-eN-xuQ">
             <objects>
                 <controller identifier="CheckIn" id="k5y-QY-7Ry" customClass="AnimatedInterfaceController" customModule="CBLinho_WatchKit_Extension">
                     <items>
-                        <group width="1" height="99" alignment="center" contentMode="center" layout="vertical" id="mVh-V2-vHp">
+                        <group width="1" height="0.59999999999999998" alignment="center" contentMode="center" layout="vertical" id="mVh-V2-vHp">
                             <items>
-                                <group height="0.69999999999999996" alignment="center" spacing="4" id="ugR-0g-XIy"/>
+                                <group height="1" alignment="center" spacing="4" id="ugR-0g-XIy"/>
                             </items>
                         </group>
-                        <group width="136" height="32" alignment="center" verticalAlignment="center" id="Ned-b1-BZw">
+                        <group width="136" height="0.23999999999999999" alignment="center" verticalAlignment="center" id="Ned-b1-BZw">
                             <items>
-                                <button width="30" height="30" alignment="left" backgroundImage="iconBall" id="gCR-5K-ras">
+                                <button width="0.25" height="30" alignment="left" backgroundImage="iconBall" id="gCR-5K-ras">
                                     <connections>
                                         <action selector="play" destination="k5y-QY-7Ry" id="Yto-Qy-FJr"/>
                                     </connections>
                                 </button>
-                                <button width="30" height="30" alignment="left" backgroundImage="iconFood" id="tc1-rM-9aa">
-                                    <connections>
-                                        <action selector="giveFood" destination="k5y-QY-7Ry" id="zC1-PS-EJo"/>
-                                    </connections>
-                                </button>
-                                <button width="30" height="30" alignment="left" backgroundImage="iconPillow" id="Kzz-Cp-lQN">
+                                <button width="0.25" height="30" alignment="left" backgroundImage="iconPillow" id="Kzz-Cp-lQN">
                                     <connections>
                                         <action selector="sleep" destination="k5y-QY-7Ry" id="bwd-0U-8SE"/>
                                     </connections>
                                 </button>
-                                <button width="35" height="31" alignment="left" backgroundImage="iconShower" id="ved-OV-1OI">
+                                <button width="0.25" height="31" alignment="left" backgroundImage="iconShower" id="ved-OV-1OI">
                                     <connections>
                                         <action selector="giveShower" destination="k5y-QY-7Ry" id="UJU-1C-bad"/>
                                     </connections>
                                 </button>
+                                <button width="0.25" height="30" alignment="left" backgroundImage="iconFood" id="tc1-rM-9aa">
+                                    <connections>
+                                        <action selector="giveFood" destination="k5y-QY-7Ry" id="zC1-PS-EJo"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <group width="1" height="0.14999999999999999" alignment="left" id="0PG-JP-SSX">
+                            <items>
+                                <group width="0.25" alignment="left" id="OkS-4X-5PR">
+                                    <items>
+                                        <label width="1" height="1" alignment="left" text="100" textAlignment="center" id="PBq-9A-r2Q">
+                                            <fontDescription key="font" type="system" pointSize="12"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <group width="0.25" alignment="left" id="b7P-Nw-J0Z">
+                                    <items>
+                                        <label width="1" height="1" alignment="left" text="100" textAlignment="center" id="3GF-ff-1jf">
+                                            <fontDescription key="font" type="system" pointSize="12"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <group width="0.25" alignment="left" id="eGk-ev-JvX">
+                                    <items>
+                                        <label width="1" height="1" alignment="left" text="100" textAlignment="center" id="Fvh-1E-bZl">
+                                            <fontDescription key="font" type="system" pointSize="12"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <group width="0.25" alignment="left" id="pdE-lF-462">
+                                    <items>
+                                        <label width="1" height="1" alignment="left" text="100" textAlignment="center" id="a2j-VX-SZW">
+                                            <fontDescription key="font" type="system" pointSize="12"/>
+                                        </label>
+                                    </items>
+                                </group>
                             </items>
                         </group>
                     </items>
                     <connections>
+                        <outlet property="hungryLabel" destination="a2j-VX-SZW" id="6bQ-Fn-C75"/>
                         <outlet property="imageAnimatedGroup" destination="mVh-V2-vHp" id="TbH-2K-1EU"/>
+                        <outlet property="playLabel" destination="PBq-9A-r2Q" id="awn-gR-vC5"/>
+                        <outlet property="showerLabel" destination="Fvh-1E-bZl" id="NrV-tg-OB0"/>
+                        <outlet property="sleepLabel" destination="3GF-ff-1jf" id="4jH-QV-oim"/>
                     </connections>
                 </controller>
             </objects>

@@ -32,8 +32,6 @@ class LifeCblinhoViewController: UIViewController {
     var dirtyStr = "100"
     var sleepyStr = "100"
     
-    var messageReceive : [String : String] = ["Boring": "100", "Hungry": "100", "Sleepy": "100","Dirty": "100"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,42 +48,40 @@ class LifeCblinhoViewController: UIViewController {
         Animations.animationGiff(imagens: animacoes.select[AnimationCase.barFull]!, viewAnimation: showerBar)
         
         
+        //setup initial configs
         CebelinhoPlay.start()
         cebelinho = CebelinhoPlay.getCebeliho()
+        
+        //timer to update UI
         Timer.scheduledTimer(timeInterval: 1, target: self,
                              selector: #selector(updateUI), userInfo: nil, repeats: true)
         
+        //verify if WCSession is supported to assign delegate and activate
         if (WCSession.isSupported()) {
             let session = WCSession.default
             session.delegate = self
             session.activate()
         }
     }
-
+    
     @objc func updateUI(){
-      
-            //boringStr = String((cebelinho?.boring)!)
-            //hungryStr = String((cebelinho?.hungry)!)
-            //dirtyStr = String((cebelinho?.dirty)!)
-            //sleepyStr = String((cebelinho?.sleepy)!)
-            
-        
-//            self.hungryLabel.text = hungryStr
-//            self.sleepyLabel.text = sleepyStr
-//            self.boringLabel.text = boringStr
-//            self.dirtyLabel.text = dirtyStr
         
         updateStatusBars(attribute: .happy)
         updateStatusBars(attribute: .hungry)
         updateStatusBars(attribute: .shower)
         updateStatusBars(attribute: .sleep)
         
-        if((cebelinho?.boring)! >= 35 && (cebelinho?.dirty)! >= 35 && (cebelinho?.hungry)! >= 35 && (cebelinho?.sleepy)! >= 35){
+        if((cebelinho?.boring)! >= 60 && (cebelinho?.dirty)! >= 60 && (cebelinho?.hungry)! >= 60 && (cebelinho?.sleepy)! >= 60){
             
             Animations.animationGiff(imagens: animacoes.select[AnimationCase.padrao]!, viewAnimation: cebelinhoView)
+            
+        }else if((cebelinho?.boring)! < 34 && (cebelinho?.dirty)! < 34 && (cebelinho?.hungry)! < 34 && (cebelinho?.sleepy)! < 34){
+            Animations.animationGiff(imagens: animacoes.select[AnimationCase.dead]!, viewAnimation: cebelinhoView)
         }
+        
     }
     
+    //Update status bar(attributes) and animations
     func updateStatusBars(attribute : Attribute){
         
         var attrDouble = 0.0
@@ -126,20 +122,53 @@ class LifeCblinhoViewController: UIViewController {
             
             Animations.animationGiff(imagens: animacoes.select[sadCBLinho]!, viewAnimation: cebelinhoView)
         }
+                
+    }
+    
+    
+    //buttons to give attributes
+    @IBAction func play(_ sender: Any) {
+        self.sleepBool = true
+        clickGiveAttributes(attr: .happy)
+    }
+    @IBAction func toSleep(_ sender: Any) {
+         self.sleepBool = !sleepBool
+        if sleepBool == false {
+             Animations.animationGiff(imagens: animacoes.select[AnimationCase.sleepy]!, viewAnimation: cebelinhoView)
+        }else{
+            Animations.animationGiff(imagens: animacoes.select[AnimationCase.padrao]!, viewAnimation: cebelinhoView)
+        }
+        clickGiveAttributes(attr: .sleep)
+    }
+    
+    @IBAction func giveShower(_ sender: Any) {
+        self.sleepBool = true
         
-        
+        clickGiveAttributes(attr: .shower)
         
     }
     
-    func verificStatus(status: Double){
-        
+    @IBAction func giveFood(_ sender: Any) {
+        self.sleepBool = true
+        clickGiveAttributes(attr: .hungry)
     }
+    
+    //give attributes when click in the buttons
+    func clickGiveAttributes(attr : Attribute){
+        cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
+        CebelinhoPlay.giveAttributes(attr: attr)
+        sendWatchMessage()
+    }
+
+}
+
+//Connectivity with watchOS
+extension LifeCblinhoViewController: WCSessionDelegate {
     
     func sendWatchMessage() {
-        
         // send a message to the watch if it's reachable
         if (WCSession.default.isReachable) {
-          
+            
             let bStr = String((cebelinho?.boring)!)
             let hStr = String((cebelinho?.hungry)!)
             let dStr = String((cebelinho?.dirty)!)
@@ -153,55 +182,37 @@ class LifeCblinhoViewController: UIViewController {
         }
     }
     
-    @IBAction func play(_ sender: Any) {
-        //give attributes and update animation
-        self.sleepBool = true
-        Animations.animationGiff(imagens: animacoes.select[AnimationCase.barFull]!, viewAnimation: happyBar)
+    
+    //When receive watch message, reply to sync core data
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         
-        cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
-        CebelinhoPlay.giveAttributes(attr: .happy)
-        //send updates to watch
-        sendWatchMessage()
+        let lastModifyWatch = message["lastModifyWatch"] as! Double
+        let firstTimeWatch = message["firstTimeWatch"] as! Bool
         
-    }
-    @IBAction func toSleep(_ sender: Any) {
+        print(lastModifyWatch , " - ", (cebelinho?.lastModifyIOS)!)
         
-         self.sleepBool = !sleepBool
-        
-        if sleepBool == false {
-             Animations.animationGiff(imagens: animacoes.select[AnimationCase.sleepy]!, viewAnimation: cebelinhoView)
-        }else{
-            Animations.animationGiff(imagens: animacoes.select[AnimationCase.padrao]!, viewAnimation: cebelinhoView)
+        //if the last modify was in watch, so get the attributes and let equals in the iOS app
+        if lastModifyWatch > (cebelinho?.lastModifyIOS)! || firstTimeWatch == true{
+            
+            cebelinho?.boring = Double(message["Boring"] as! String)!
+            cebelinho?.hungry = Double(message["Hungry"] as! String)!
+            cebelinho?.dirty = Double(message["Dirty"] as! String)!
+            cebelinho?.sleepy = Double(message["Sleepy"] as! String)!
+            
         }
         
-        cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
-        CebelinhoPlay.giveAttributes(attr: .sleep)
-        sendWatchMessage()
+        //else, get the attributes of iOS App and send to watch 
+        let bStr = String((cebelinho?.boring)!)
+        let hStr = String((cebelinho?.hungry)!)
+        let dStr = String((cebelinho?.dirty)!)
+        let sStr = String((cebelinho?.sleepy)!)
         
-    }
-    
-    @IBAction func giveShower(_ sender: Any) {
-        self.sleepBool = true
+        let reply = ["Boring": bStr, "Hungry": hStr, "Sleepy": sStr,"Dirty": dStr, "lastModifyIOS": String(CFAbsoluteTimeGetCurrent())]
         
-        
-        cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
-        CebelinhoPlay.giveAttributes(attr: .shower)
-        sendWatchMessage()
-        
-    }
-    
-    @IBAction func giveFood(_ sender: Any) {
-        self.sleepBool = true
-        
-        
-        cebelinho?.lastModifyIOS = CFAbsoluteTimeGetCurrent()
-        CebelinhoPlay.giveAttributes(attr: .hungry)
-        sendWatchMessage()
-    }
-    
+        replyHandler(reply)
 
-}
-extension LifeCblinhoViewController: WCSessionDelegate {
+    }
+    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         
     }
@@ -212,35 +223,6 @@ extension LifeCblinhoViewController: WCSessionDelegate {
     
     func sessionDidDeactivate(_ session: WCSession) {
         
-    }
-    
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        
-        let lastModifyWatch = message["lastModifyWatch"] as! Double
-        
-        
-        //cebelinho?.lastModifyWatch = lastModifyWatch
-        
-        print(lastModifyWatch , " - ", (cebelinho?.lastModifyIOS)!)
-        if lastModifyWatch > (cebelinho?.lastModifyIOS)! || message["firstTimeWatch"] as! Bool == true{
-            
-            
-            cebelinho?.boring = Double(message["Boring"] as! String)!
-            cebelinho?.hungry = Double(message["Hungry"] as! String)!
-            cebelinho?.dirty = Double(message["Dirty"] as! String)!
-            cebelinho?.sleepy = Double(message["Sleepy"] as! String)!
-            
-        }
-        
-        let bStr = String((cebelinho?.boring)!)
-        let hStr = String((cebelinho?.hungry)!)
-        let dStr = String((cebelinho?.dirty)!)
-        let sStr = String((cebelinho?.sleepy)!)
-        
-        let reply = ["Boring": bStr, "Hungry": hStr, "Sleepy": sStr,"Dirty": dStr, "lastModifyIOS": String(CFAbsoluteTimeGetCurrent())]
-        
-        replyHandler(reply)
-
     }
 }
 

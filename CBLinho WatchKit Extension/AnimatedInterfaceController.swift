@@ -12,14 +12,17 @@ import CoreData
 import WatchConnectivity
 
 
-class AnimatedInterfaceController: WKInterfaceController,  WCSessionDelegate{
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
-    }
+class AnimatedInterfaceController: WKInterfaceController{
     
 
-    
+
     @IBOutlet var imageAnimatedGroup: WKInterfaceGroup!
+    
+    
+    @IBOutlet var playLabel: WKInterfaceLabel!
+    @IBOutlet var sleepLabel: WKInterfaceLabel!
+    @IBOutlet var showerLabel: WKInterfaceLabel!
+    @IBOutlet var hungryLabel: WKInterfaceLabel!
     
     
     var cebelinho : Cebelinho?
@@ -28,85 +31,43 @@ class AnimatedInterfaceController: WKInterfaceController,  WCSessionDelegate{
     var hungryStr = "100"
     var dirtyStr = "100"
     var sleepyStr = "100"
-    var messageReceive : [String : String] = ["Boring": "100", "Hungry": "100", "Sleepy": "100","Dirty": "100"]
-    
+     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         imageAnimatedGroup.setBackgroundImageNamed("AnimationWatch")
         imageAnimatedGroup.startAnimatingWithImages(in: NSRange(location: 0, length: 10), duration: 1.5, repeatCount: -1)
         
         
+        //setup initial configs
         CebelinhoPlay.start()
-        //CebelinhoPlay.loosingStatusByTime()
         cebelinho = CebelinhoPlay.getCebeliho()
-        Timer.scheduledTimer(timeInterval: 2, target: self,
+        
+        //timer to update UI
+        Timer.scheduledTimer(timeInterval: 1, target: self,
                              selector: #selector(updateUI), userInfo: nil, repeats: true)
         
+        //verify if WCSession is supported to assign delegate and activate
         if WCSession.isSupported() {
             let session = WCSession.default
             session.delegate = self
             session.activate()
         }
-        
     }
     
     @objc func updateUI(){
-        boringStr = String((cebelinho?.boring)!)
-        //boringStr = messageReceive["Boring"]!
-        hungryStr = String((cebelinho?.hungry)!)
-        //hungryStr = messageReceive["Hungry"]!
-        dirtyStr = String((cebelinho?.dirty)!)
-        //dirtyStr = messageReceive["Sleepy"]!
-        sleepyStr = String((cebelinho?.sleepy)!)
-        //sleepyStr = messageReceive["Dirty"]!
         
+        boringStr = String(format : "%.0f", (cebelinho?.boring)!)
+        hungryStr = String(format : "%.0f",(cebelinho?.hungry)!)
+        dirtyStr = String(format : "%.0f",(cebelinho?.dirty)!)
+        sleepyStr = String(format : "%.0f",(cebelinho?.sleepy)!)
         
+        self.hungryLabel.setText(hungryStr)
+        self.sleepLabel.setText(sleepyStr)
+        self.playLabel.setText(boringStr)
+        self.showerLabel.setText(dirtyStr)
         
-        //sendWatchMessage()
     }
     
-    func sendWatchMessage() {
-        
-        //        let currentTime = CFAbsoluteTimeGetCurrent()
-        //
-        //        // if less than half a second has passed, bail out
-        //        if lastMessage + 0.5 > currentTime {
-        //            return
-        //        }
-        
-        // send a message to the watch if it's reachable
-        if (WCSession.default.isReachable) {
-            // this is a meaningless message, but it's enough for our purposes
-            
-            //let date = CFAbsoluteTimeGetCurrent()
-            
-            let bStr = String((cebelinho?.boring)!)
-            let hStr = String((cebelinho?.hungry)!)
-            let dStr = String((cebelinho?.dirty)!)
-            let sStr = String((cebelinho?.sleepy)!)
-            
-            let message = ["Boring": bStr, "Hungry": hStr, "Sleepy": sStr,"Dirty": dStr, "lastModifyWatch": String((cebelinho?.lastModifyWatch)!)]
-            
-            print("enviando: ", message)
-            WCSession.default.sendMessage(message, replyHandler: { (reply) in
-                
-                print("resposta: ",reply)
-                
-                self.cebelinho?.boring = Double(reply["Boring"] as! String)!
-                self.cebelinho?.hungry = Double(reply["Hungry"] as! String)!
-                self.cebelinho?.dirty = Double(reply["Dirty"] as! String)!
-                self.cebelinho?.sleepy = Double(reply["Sleepy"] as! String)!
-                
-                
-            }, errorHandler: { (error) in
-                print(error)
-            })
-            
-        }
-        
-        // update our rate limiting property
-        // lastMessage = CFAbsoluteTimeGetCurrent()
-    }
     
     
     
@@ -120,27 +81,51 @@ class AnimatedInterfaceController: WKInterfaceController,  WCSessionDelegate{
         super.didDeactivate()
     }
     
-    
+    //buttons to give attributes
     @IBAction func giveFood() {
-        cebelinho?.lastModifyWatch = CFAbsoluteTimeGetCurrent()
-        CebelinhoPlay.giveAttributes(attr: .hungry)
-        sendWatchMessage()
+        self.hungryLabel.setText(hungryStr)
+        clickGiveAttributes(attr: .hungry)
+      
     }
     @IBAction func giveShower() {
-        cebelinho?.lastModifyWatch = CFAbsoluteTimeGetCurrent()
-        CebelinhoPlay.giveAttributes(attr: .shower)
-        sendWatchMessage()
+        self.showerLabel.setText(dirtyStr)
+        clickGiveAttributes(attr: .shower)
     }
     @IBAction func play() {
-        cebelinho?.lastModifyWatch = CFAbsoluteTimeGetCurrent()
-        CebelinhoPlay.giveAttributes(attr: .happy)
-        sendWatchMessage()
+        self.playLabel.setText(boringStr)
+        clickGiveAttributes(attr: .happy)
+      
     }
     @IBAction func sleep() {
+        self.sleepLabel.setText(sleepyStr)
+        clickGiveAttributes(attr: .sleep)
+        
+    }
+    
+    //give attributes when click in the buttons
+    func clickGiveAttributes(attr : Attribute){
         cebelinho?.lastModifyWatch = CFAbsoluteTimeGetCurrent()
-        CebelinhoPlay.giveAttributes(attr: .sleep)
-        sendWatchMessage()
+        CebelinhoPlay.giveAttributes(attr: attr)
+        Connectivity.connectivity.sendMessage()
     }
 
+}
+
+//Connectivity with iPhone
+extension AnimatedInterfaceController : WCSessionDelegate {
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        Connectivity.connectivity.sendMessage()
+    }
+    
+    //when receive message from iPhone, update core data
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        
+        cebelinho?.boring = Double(message["Boring"] as! String)!
+        cebelinho?.hungry = Double(message["Hungry"] as! String)!
+        cebelinho?.dirty = Double(message["Dirty"] as! String)!
+        cebelinho?.sleepy = Double(message["Sleepy"] as! String)!
+        
+    }
+    
 }
 

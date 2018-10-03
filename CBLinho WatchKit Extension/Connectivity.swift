@@ -26,7 +26,7 @@ class Connectivity : NSObject, WCSessionDelegate {
             session?.activate()
         }
     }
-    
+    //send message to iPhone to sync core data
     func sendMessage(){
         
         let cebelinho = CebelinhoPlay.getCebeliho()
@@ -40,8 +40,6 @@ class Connectivity : NSObject, WCSessionDelegate {
             let firstTime = UserDefaults.standard.bool(forKey: "firstAccessWatch")
             
             let message : [String : Any] = ["Boring": bStr, "Hungry": hStr, "Sleepy": sStr,"Dirty": dStr, "lastModifyWatch": cebelinho.lastModifyWatch, "firstTimeWatch" : firstTime]
-            
-            
             
             print("enviando: ", message)
             WCSession.default.sendMessage(message, replyHandler: { (reply) in

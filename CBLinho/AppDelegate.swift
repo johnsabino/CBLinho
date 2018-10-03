@@ -31,14 +31,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        
+        //invalidade timer and save states
         CebelinhoPlay.timer?.invalidate()
         
         let cebelinho = CebelinhoPlay.getCebeliho()
-        print("salvando data quando finaliza")
+        print("salvando ultima vez que o app do iOS ficou inativo")
         cebelinho.lastClosedIOS = CFAbsoluteTimeGetCurrent()
+
         
-        var lowerAttribute = CebelinhoPlay.getLowerAttribute()/2
-        
+        //schedule notification when apps resign active
+        //this notification is for users take care of Cebelinho
+        //calculate the lowerAttribute of Cebelhinho, then cauculate the time for notification
+        let lowerAttribute = CebelinhoPlay.getLowerAttribute()/2
         var timeLeft = Int(lowerAttribute)
         print(Double(lowerAttribute/2))
         
@@ -61,6 +66,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        //start Cebelinho
         CebelinhoPlay.start()
         CebelinhoPlay.loosingStatusByTime()
         CebelinhoPlay.updateAttributesOnActive(device: .phone)

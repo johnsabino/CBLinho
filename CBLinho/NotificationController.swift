@@ -23,11 +23,14 @@ class NotificationController {
             }
         }
     }
+    
+    //schedule notification
+    //this notification is for users take care of Cebelinho
     static func scheduleNotification(withTime : Double){
 
         let content = UNMutableNotificationContent()
         content.title = "Don't forget"
-        content.body = "Cebelinho!"
+        content.body = "Cebelinho needs care!"
         content.sound = UNNotificationSound.default()
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: withTime,
@@ -38,7 +41,7 @@ class NotificationController {
                                             content: content, trigger: trigger)
         center.add(request, withCompletionHandler: { (error) in
             if let error = error {
-                // Something went wrong
+                print(error)
             }
         })
         

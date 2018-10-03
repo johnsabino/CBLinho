@@ -18,11 +18,10 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("ficando ativo")
         
-        //let state = defaults.bool(forKey: "firstAccessWatch")
+        //set userDefaults firstAccess in watchOS
         UserDefaults.standard.setValue(true, forKey: "firstAccessWatch")
         
-        
-        
+        //start Cebelinho and sync
         CebelinhoPlay.start()
         CebelinhoPlay.loosingStatusByTime()
         CebelinhoPlay.updateAttributesOnActive(device: .watch)
@@ -35,23 +34,17 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, etc.
         print("ficando inativo")
+        
+        
+        //invalidade timer and save states
         CebelinhoPlay.timer?.invalidate()
         let cebelinho = CebelinhoPlay.getCebeliho()
-        print("salvando data quando finaliza")
+        print("salvando ultima vez que o app do watchOS ficou inativo")
+        
         cebelinho.lastClosedWatch = CFAbsoluteTimeGetCurrent()
         
         CoreDataManager.saveContext()
         
-//        var lowerAttribute = CebelinhoPlay.getLowerAttribute()/2
-//        
-//        var timeLeft = Int(lowerAttribute)
-//        print(Double(lowerAttribute/2))
-//
-//        if timeLeft <= 1{
-//            timeLeft = 10
-//        }
-        
-        //NotificationController.sendNotification(withTime: Double(timeLeft))
     }
     
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
